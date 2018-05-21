@@ -55,7 +55,10 @@ class FetchLoader extends React.Component {
         <CalloutAlert error={error} /> :
       loading ?
         <div id={`loader`}>Loading, please wait...</div> :
-        <FilterList {...data} ResultElementComponent={ResultElementComponent}/>
+        data.results ?
+          <FilterList {...data} ResultElementComponent={ResultElementComponent}/> :
+          <div>No experiments containing the searched gene ID were found.</div>
+
     )
   }
 

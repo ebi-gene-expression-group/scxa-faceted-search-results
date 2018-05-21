@@ -53,7 +53,8 @@ class FilterList extends React.Component {
             <FilterSidebar {...{checkboxFacetGroups, hideFacetGroupNames}}
                            facets={_(results).flatMap('facets').value()}
                            onChange={this._handleChange}/>
-          </div> }
+          </div>
+        }
         <div className={resultsHaveFacets ? `small-12 medium-10 columns` : `small-12 columns`}>
             {filteredElements.map((element, index) => <div key={index}><ResultElementComponent {...element}/></div>)}
         </div>
