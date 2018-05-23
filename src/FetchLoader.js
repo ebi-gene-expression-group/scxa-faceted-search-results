@@ -55,10 +55,9 @@ class FetchLoader extends React.Component {
         <CalloutAlert error={error} /> :
       loading ?
         <div id={`loader`}>Loading, please wait...</div> :
-        data.results ?
+        data.results.length > 0 ?
           <FilterList {...data} ResultElementComponent={ResultElementComponent}/> :
           <div>{noResultsMessage}</div>
-
     )
   }
 
