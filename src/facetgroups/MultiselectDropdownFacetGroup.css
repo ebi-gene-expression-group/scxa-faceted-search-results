@@ -1,4 +1,4 @@
-/* Unfortunately we need to set some EBI VF overrides here because it applies styles to elements deper than
+/* Unfortunately we need to set some EBI VF overrides here because it applies styles to elements deeper than
 React-Select’s APIs (e.g. the div that encloses the input rather than the input itself) */
 .input-clear input, .input-clear input:focus {
   height: unset;
