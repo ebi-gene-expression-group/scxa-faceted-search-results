@@ -1,5 +1,6 @@
 import React from 'react'
 import Select from 'react-select'
+import styled from 'styled-components'
 
 import FacetGroupPropTypes from './FacetGroupPropTypes'
 
@@ -7,17 +8,15 @@ import FacetGroupPropTypes from './FacetGroupPropTypes'
 // background-image, whereas the control can be styled using the styles API packaged in React-Select
 
 // Stolen from https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.css select
-const ebiVfSelectBackgroundStyles = {
-  backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>")`,
-  backgroundOrigin: `content-box`,
-  backgroundPosition: `center`,
-  backgroundRepeat: `no-repeat`,
-  backgroundSize: `9px 6px`,
-  width: `1.5rem`,
-  height: `1rem`
-}
-
-const DropdownIndicator = () => <span style={ebiVfSelectBackgroundStyles} />
+const DropdownIndicator = styled.span`
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' version='1.1' width='32' height='24' viewBox='0 0 32 24'><polygon points='0,0 32,0 16,24' style='fill: rgb%28138, 138, 138%29'></polygon></svg>");
+  background-origin: content-box;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 9px 6px;
+  width: 1.5rem;
+  height: 1rem;
+`
 
 // Stolen from https://ebi.emblstatic.net/web_guidelines/EBI-Framework/v1.3/css/ebi-global.css select
 const ebiVfSelectStyles = {
