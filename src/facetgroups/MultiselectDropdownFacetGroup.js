@@ -2,7 +2,6 @@ import React from 'react'
 import Select from 'react-select'
 
 import FacetGroupPropTypes from './FacetGroupPropTypes'
-import styles from './MultiselectDropdownFacetGroup.css'
 
 // We replace the dropdown indicator for another component because the default chevron is a SVG element, not a
 // background-image, whereas the control can be styled using the styles API packaged in React-Select
@@ -49,7 +48,7 @@ const ebiVfSelectStyles = {
 }
 
 const MultiselectDropdownFacetGroup = ({hideName, facetGroupName, facets, onChange}) =>
-  <div className={styles[`input-clear`] + ` padding-bottom-xlarge`}>
+  <div className={`padding-bottom-xlarge`}>
     {!hideName && <h4>{facetGroupName}</h4>}
     <Select components={{ DropdownIndicator, IndicatorSeparator: null }}
             styles={ebiVfSelectStyles}
