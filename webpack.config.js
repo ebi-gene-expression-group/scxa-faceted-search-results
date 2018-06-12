@@ -2,8 +2,8 @@ const CleanWebpackPlugin = require(`clean-webpack-plugin`)
 
 module.exports = {
   entry: {
-    fetchLoader: [`babel-polyfill`, `./html/renderFetchLoader.js`],
-    filterList: `./html/renderFilterList.js`
+    fetchLoaderDemo: [`babel-polyfill`, `./html/fetchLoaderDemo.js`],
+    facetedSearchContainerDemo: `./html/facetedSearchContainerDemo.js`
   },
 
   plugins: [
