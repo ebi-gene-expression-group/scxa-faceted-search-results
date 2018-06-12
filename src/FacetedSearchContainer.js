@@ -40,7 +40,7 @@ class FacetedSearchContainer extends React.Component {
     const {results} = this.props
     const {selectedFacets} = this.state
 
-    const {checkboxFacetGroups, hideFacetGroupNames} = this.props
+    const {checkboxFacetGroups} = this.props
     const {ResultElementClass, resultsMessage} = this.props
 
     const resultsHaveFacets =
@@ -54,7 +54,7 @@ class FacetedSearchContainer extends React.Component {
       <div className={`row expanded`}>
         { resultsHaveFacets &&
           <div className={`small-12 medium-2 columns`}>
-            <FilterSidebar {...{results, selectedFacets, checkboxFacetGroups, hideFacetGroupNames}}
+            <FilterSidebar {...{results, selectedFacets, checkboxFacetGroups}}
                            onChange={this._handleChange}/>
           </div>
         }
