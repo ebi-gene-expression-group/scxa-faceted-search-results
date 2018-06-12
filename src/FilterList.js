@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {ResultPropTypes} from './ResultPropTypes'
 
-const FilterList = ({results, selectedFacets, title, ResultElementClass}) => {
+const FilterList = ({results, selectedFacets, resultsMessage, ResultElementClass}) => {
   const filteredElements =
     results.filter((result) =>
       // Results that have at least one matching facet (some) in all (every) selected groups
@@ -14,7 +14,7 @@ const FilterList = ({results, selectedFacets, title, ResultElementClass}) => {
 
   return (
     <div>
-      <h4>{title}</h4>
+      <h4>{resultsMessage}</h4>
       {filteredElements.map((element, index) => <div key={index}><ResultElementClass {...element}/></div>)}
     </div>
   )
@@ -23,12 +23,12 @@ const FilterList = ({results, selectedFacets, title, ResultElementClass}) => {
 FilterList.propTypes = {
   results: PropTypes.arrayOf(ResultPropTypes).isRequired,
   selectedFacets: PropTypes.object,
-  title: PropTypes.string,
+  resultsMessage: PropTypes.string,
   ResultElementClass: PropTypes.func.isRequired
 }
 
 FilterList.defaultProps = {
-  title: ``,
+  resultsMessage: ``,
   selectedFacets: {}
 }
 
