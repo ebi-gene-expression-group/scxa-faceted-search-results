@@ -31,7 +31,7 @@ class CheckboxFacetGroup extends React.Component {
 
     return (
       <div className={`padding-bottom-xlarge`}>
-        {!hideName && <h4>{facetGroupName}</h4>}
+        <h4>{facetGroupName}</h4>
         {facets.map((facet) => <CheckboxOption {...facet}
                                                onChange={this._handleChange}
                                                key={facet.value}

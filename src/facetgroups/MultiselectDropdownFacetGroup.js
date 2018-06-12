@@ -48,7 +48,7 @@ const ebiVfSelectStyles = {
 
 const MultiselectDropdownFacetGroup = ({hideName, facetGroupName, facets, onChange}) =>
   <div className={`padding-bottom-xlarge`}>
-    {!hideName && <h4>{facetGroupName}</h4>}
+    <h4>{facetGroupName}</h4>
     <Select components={{ DropdownIndicator, IndicatorSeparator: null }}
             styles={ebiVfSelectStyles}
             closeMenuOnSelect={false}
