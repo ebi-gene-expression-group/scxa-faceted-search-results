@@ -14,7 +14,6 @@ Enzyme.configure({ adapter: new Adapter() })
 
 const props = {
   facetGroupName: `Vindicators`,
-  hideName: false,
   facets: [],
   onChange: () => {}
 }
@@ -32,11 +31,6 @@ describe(`CheckboxFacetGroup`, () => {
     expect(wrapper.find({ type: `checkbox` })).toHaveLength(props.facets.length)
     expect(wrapper.find(`h4`)).toHaveLength(1)
     expect(wrapper.find(`h4`).text()).toEqual(props.facetGroupName)
-  })
-
-  test(`can hide the header`, () => {
-    const wrapper = mount(<CheckboxFacetGroup {...props} hideName={true} />)
-    expect(wrapper.find(`h4`)).toHaveLength(0)
   })
 
   test(`callback is called when a checkbox is checked/unchecked with the right arguments`, () => {
@@ -71,11 +65,6 @@ describe(`MultiselectDropdownFacetGroup`, () => {
     while (props.facets.length === 0) {
       props.facets = vindicators.filter((vindicator) => Math.random() > 0.5)
     }
-  })
-
-  test(`can hide the header`, () => {
-    const wrapper = mount(<CheckboxFacetGroup {...props} hideName={true} />)
-    expect(wrapper.find(`h4`)).toHaveLength(0)
   })
 
   test(`callback includes facet name in arguments`, () => {

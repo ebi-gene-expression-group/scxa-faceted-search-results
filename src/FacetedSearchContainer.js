@@ -71,7 +71,6 @@ FacetedSearchContainer.propTypes = {
   // Supplied by FetchLoader, or set manually for testing
   results: PropTypes.arrayOf(ResultPropTypes).isRequired,
   checkboxFacetGroups: PropTypes.arrayOf(PropTypes.string),
-  hideFacetGroupNames: PropTypes.arrayOf(PropTypes.string),
   resultsMessage: PropTypes.string,
   // Must be a class that extends React.Component, sadly there’s no such prop type :(
   // See also https://stackoverflow.com/questions/45315918/react-proptypes-component-class
@@ -79,8 +78,8 @@ FacetedSearchContainer.propTypes = {
 }
 
 FacetedSearchContainer.defaultProps = {
-  checkboxFacetGroups: [],
-  hideFacetGroupNames: []
+  resultsMessage: ``,
+  checkboxFacetGroups: []
 }
 
 export default FacetedSearchContainer

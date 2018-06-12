@@ -7,21 +7,19 @@ import Adapter from 'enzyme-adapter-react-16'
 import {getRandomInt, episodes, EpisodeCard} from './TestUtils'
 
 import FilterList from '../src/FilterList'
-import FilterSidebar from '../src/FilterSidebar'
 
 Enzyme.configure({ adapter: new Adapter() })
 
 const props = {
   results: episodes,
+  selectedFacets: {},
   checkboxFacetGroups: [`Season`],
-  hideFacetGroupNames: [`Season`],
-  ResultElementComponent: EpisodeCard
+  ResultElementClass: EpisodeCard
 }
 
 describe(`FilterList`, () => {
-  test(`shows all results when no filters are set`, () => {
+  test(`shows all results when no facets are selected`, () => {
     const wrapper = mount(<FilterList {...props} />)
-    expect(Object.keys(wrapper.state(`selectedFacets`))).toHaveLength(0)
     expect(wrapper.find(EpisodeCard)).toHaveLength(props.results.length)
   })
 
@@ -29,28 +27,11 @@ describe(`FilterList`, () => {
     const randomEpisode = props.results[getRandomInt(0, props.results.length)]
     const randomFacet = randomEpisode.facets[getRandomInt(0, randomEpisode.facets.length)]
 
-    const wrapper = mount(<FilterList {...props} />)
-    wrapper.setState({
-      selectedFacets: {
-        [randomFacet.group]: [randomFacet.value]
-      }})
-    wrapper.update()
+    const selectedFacets = { [randomFacet.group]: [randomFacet.value] }
 
+    const wrapper = mount(<FilterList {...props} selectedFacets={selectedFacets}/>)
     expect(wrapper.find(EpisodeCard).length).toBeLessThan(props.results.length)
     expect(wrapper.find(EpisodeCard).map(e => e.props())).toContainEqual(randomEpisode.element)
-  })
-
-  test(`when results have no facets only the results list is displayed`, () => {
-    const wrapperWithFacets = mount(<FilterList {...props} />)
-    expect(wrapperWithFacets.find(FilterSidebar)).toHaveLength(1)
-    const wrapperWithoutFacets = mount(<FilterList {...props} results={props.results.map((result) => ({element: result.element}))}/>)
-    expect(wrapperWithoutFacets.find(FilterSidebar)).toHaveLength(0)
-  })
-
-  test(`clicking on facets works`, () => {
-    const wrapper = mount(<FilterList {...props} />)
-    wrapper.find(FilterSidebar).find({ type: `checkbox` }).first(0).simulate(`change`)
-    expect(wrapper.find(EpisodeCard).length).toBeLessThan(props.results.length)
   })
 
   test(`matches snapshot`, () => {

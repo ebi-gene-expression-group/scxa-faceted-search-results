@@ -6,17 +6,39 @@ Array [
     className="padding-bottom-xlarge"
   >
     <h4>
-      Status
+      Season
     </h4>
     <div>
       <input
         checked={false}
         onChange={[Function]}
         type="checkbox"
-        value="deceased"
+        value="1"
       />
       <label>
-        Deceased
+        Season 1
+      </label>
+    </div>
+    <div>
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+        value="2"
+      />
+      <label>
+        Season 2
+      </label>
+    </div>
+    <div>
+      <input
+        checked={false}
+        onChange={[Function]}
+        type="checkbox"
+        value="3"
+      />
+      <label>
+        Season 3
       </label>
     </div>
   </div>,
@@ -24,7 +46,7 @@ Array [
     className="padding-bottom-xlarge"
   >
     <h4>
-      Vindicator
+      Planet
     </h4>
     <div
       className="css-10nd86i"
@@ -36,7 +58,7 @@ Array [
         className="css-1uvvha"
         role="status"
       >
-        11 results available.
+        3 results available.
       </span>
       <div
         className="css-12emboz"
@@ -71,7 +93,110 @@ Array [
                 autoComplete="off"
                 autoCorrect="off"
                 disabled={false}
-                id="react-select-4-input"
+                id="react-select-6-input"
+                onBlur={[Function]}
+                onChange={[Function]}
+                onFocus={[Function]}
+                role="combobox"
+                spellCheck="false"
+                style={
+                  Object {
+                    "background": 0,
+                    "border": 0,
+                    "boxSizing": "content-box",
+                    "color": "inherit",
+                    "fontSize": "inherit",
+                    "opacity": 1,
+                    "outline": 0,
+                    "padding": 0,
+                    "width": "1px",
+                  }
+                }
+                tabIndex="0"
+                type="text"
+                value=""
+              />
+              <div
+                style={
+                  Object {
+                    "height": 0,
+                    "left": 0,
+                    "overflow": "scroll",
+                    "position": "absolute",
+                    "top": 0,
+                    "visibility": "hidden",
+                    "whiteSpace": "pre",
+                  }
+                }
+              >
+                
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          className="css-1wy0on6"
+        >
+          <span
+            className="sc-bdVaJa jcfyVD"
+            cx={[Function]}
+          />
+        </div>
+      </div>
+    </div>
+  </div>,
+  <div
+    className="padding-bottom-xlarge"
+  >
+    <h4>
+      Guest character
+    </h4>
+    <div
+      className="css-10nd86i"
+      onKeyDown={[Function]}
+    >
+      <span
+        aria-atomic="true"
+        aria-live="polite"
+        className="css-1uvvha"
+        role="status"
+      >
+        6 results available.
+      </span>
+      <div
+        className="css-12emboz"
+        onMouseDown={[Function]}
+        onTouchEnd={[Function]}
+      >
+        <div
+          className="css-1rtrksz"
+        >
+          <div
+            className="css-1492t68"
+          >
+            Select...
+          </div>
+          <div
+            className="css-rsyb7x"
+          >
+            <div
+              className=""
+              style={
+                Object {
+                  "display": "inline-block",
+                }
+              }
+            >
+              <input
+                aria-autocomplete="list"
+                aria-busy={false}
+                aria-expanded={false}
+                aria-haspopup={false}
+                autoCapitalize="none"
+                autoComplete="off"
+                autoCorrect="off"
+                disabled={false}
+                id="react-select-7-input"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
