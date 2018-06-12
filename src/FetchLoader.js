@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import URI from 'urijs'
 
-import FilterList from './FilterList'
+import FacetedSearchContainer from './FacetedSearchContainer'
 
 const _fetch = async (host, resource) => {
   const url = URI(resource, host).toString()
@@ -58,7 +58,9 @@ class FetchLoader extends React.Component {
           <p>Loading, please wait...</p>
         </div> :
         data.results && data.results.length > 0 ?
-          <FilterList {...data} ResultElementComponent={ResultElementComponent} resultsMessage={resultsMessage}/> :
+          <FacetedSearchContainer {...data} 
+                                  ResultElementComponent={ResultElementComponent}
+                                  resultsMessage={resultsMessage}/> :
           <div className={`row column`}>
             <p>{noResultsMessage}</p>
           </div>

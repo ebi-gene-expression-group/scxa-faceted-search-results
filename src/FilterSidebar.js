@@ -6,9 +6,12 @@ import FacetGroupPropTypes from './facetgroups/FacetGroupPropTypes'
 import CheckboxFacetGroup from './facetgroups/CheckboxFacetGroup'
 import MultiselectDropdownFacetGroup from './facetgroups/MultiselectDropdownFacetGroup'
 
-const FilterSidebar = ({hideFacetGroupNames, checkboxFacetGroups, facets, onChange}) => {
+import {ResultPropTypes} from './ResultPropTypes'
+
+const FilterSidebar = ({results, checkboxFacetGroups, onChange}) => {
   const facetGroups =
-    _(facets)
+    _(results)
+      .flatMap('facets')
       // Alternative (but I think uniqWith reads better): .uniqBy((facet) => facet.group + facet.name)
       .uniqWith((thisFacet, thatFacet) => thisFacet.group === thatFacet.group && thisFacet.value === thatFacet.value)
       .groupBy('group')
