@@ -34,12 +34,8 @@ const FilterSidebar = ({hideFacetGroupNames, checkboxFacetGroups, facets, onChan
 }
 
 FilterSidebar.propTypes = {
+  results: PropTypes.arrayOf(ResultPropTypes).isRequired,
   checkboxFacetGroups: PropTypes.arrayOf(PropTypes.string),
-  facets: PropTypes.arrayOf(PropTypes.shape({
-    group: PropTypes.string.isRequired,
-    value: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired
-  })).isRequired,
   onChange: PropTypes.func.isRequired
 }
 
