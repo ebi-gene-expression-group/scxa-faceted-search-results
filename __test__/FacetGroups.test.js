@@ -31,6 +31,23 @@ describe(`CheckboxFacetGroup`, () => {
     expect(wrapper.find({ type: `checkbox` })).toHaveLength(props.facets.length)
     expect(wrapper.find(`h4`)).toHaveLength(1)
     expect(wrapper.find(`h4`).text()).toEqual(props.facetGroupName)
+    // All checkboxes are enabled, cf. with next test
+    const inputProps = wrapper.find(`input`).map((labelWrapper) => labelWrapper.props())
+    inputProps.every((inputProp) => expect(inputProp).toHaveProperty(`disabled`, false))
+
+    const labelStyles = wrapper.find(`label`).map((labelWrapper) => labelWrapper.props().style)
+    labelStyles.every((labelStyle) => expect(labelStyle).not.toHaveProperty(`color`))
+  })
+
+  test(`displays disabled check boxes greyed out`, () => {
+    props.facets = props.facets.map(e => ({...e, disabled: true}))
+    const wrapper = mount(<CheckboxFacetGroup {...props} />)
+
+    const inputProps = wrapper.find(`input`).map((labelWrapper) => labelWrapper.props())
+    inputProps.every((inputProp) => expect(inputProp).toHaveProperty(`disabled`, true))
+
+    const labelStyles = wrapper.find(`label`).map((labelWrapper) => labelWrapper.props().style)
+    labelStyles.every((labelStyle) => expect(labelStyle).toHaveProperty(`color`, `lightgrey`))
   })
 
   test(`callback is called when a checkbox is checked/unchecked with the right arguments`, () => {
