@@ -17,8 +17,9 @@ const props = {
 
 describe(`FilterList`, () => {
   test(`renders as many components of ResultElementClass as filtered results`, () => {
-    const wrapper = shallow(<FilterList {...props} filteredResults={episodes.filter(() => Math.random() > 0.5)}/>)
-    expect(wrapper.find(props.ResultElementClass)).toHaveLength(props.filteredResults.length)
+    const randomFilteredResults=episodes.filter(() => Math.random() > 0.5)
+    const wrapper = shallow(<FilterList {...props} filteredResults={randomFilteredResults}/>)
+    expect(wrapper.find(props.ResultElementClass)).toHaveLength(randomFilteredResults.length)
   })
 
   test(`matches snapshot`, () => {
