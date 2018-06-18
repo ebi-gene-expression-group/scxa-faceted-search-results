@@ -54,8 +54,7 @@ const MultiselectDropdownFacetGroup = ({facetGroupName, facets, onChange}) =>
             closeMenuOnSelect={false}
             isMulti={true}
             onChange={(args) => onChange(facetGroupName, args)}
-            // getOptionLabel={(option) => option.resultsCount > 0 ? `${option.label} (${option.resultsCount})` : option.label }
-            // isOptionDisabled={(option) => option.resultsCount === 0}
+            // isOptionDisabled={(option) => option.disabled}
             options={facets.filter((facet) => !facet.disabled)}/>
   </div>
 

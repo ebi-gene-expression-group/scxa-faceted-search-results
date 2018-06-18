@@ -3,15 +3,16 @@ import { xorBy as _xorBy } from 'lodash'
 
 import FacetGroupPropTypes from './FacetGroupPropTypes'
 
-const CheckboxOption = ({group, value, label, disabled, onChange, checked}) =>
+const CheckboxOption = ({group, value, label, disabled, checked, onChange}) =>
   <div>
-    <input type={`checkbox`} {...{value, checked, disabled}} onChange={() => onChange({group, label, value})}/>
+    <input type={`checkbox`} {...{value, checked, disabled}}
+           onChange={() => onChange({group, label, value, disabled})}/>
     <label style={disabled ? {color: `lightgrey`} : {}}>{label}</label>
   </div>
 
-// In principle we don’t need this component to be stateful, but in doing so and returning a (facetGroupName, facets)
-// we have the same API as React-Select and we can have the same callback for both checkbox-style facet groups and
-// multiselect dropdowns
+// In principle we don’t need this component to be stateful, but in doing so we can create a custom _handleChange
+// function that will ultimately call onChange(facetGroupName, facets); this allows us to have the same API as
+// React-Select and reuse the same callback for both checkbox-style and multiselect facet groups
 class CheckboxFacetGroup extends React.Component {
   constructor(props) {
     super(props)
@@ -21,6 +22,7 @@ class CheckboxFacetGroup extends React.Component {
     this._handleChange = this._handleChange.bind(this)
   }
 
+  // disabled is passed in but not used (it makes tests easier)
   _handleChange(facet) {
     this.setState(
       { checkedFacets: _xorBy(this.state.checkedFacets, [facet], `value`) },
@@ -36,9 +38,9 @@ class CheckboxFacetGroup extends React.Component {
         <h4>{facetGroupName}</h4>
         {facets.map((facet) =>
           <CheckboxOption {...facet}
+                          checked={checkedFacets.some((checkedFacet) => checkedFacet.value === facet.value)}
                           onChange={this._handleChange}
-                          key={facet.value}
-                          checked={checkedFacets.some((checkedFacet) => checkedFacet.value === facet.value)}/>
+                          key={facet.value}/>
         )}
       </div>
     )

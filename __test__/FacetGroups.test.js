@@ -39,7 +39,9 @@ describe(`CheckboxFacetGroup`, () => {
     const wrapper = mount(<CheckboxFacetGroup {...props} onChange={mockCallback} />)
     wrapper.find({ type: `checkbox` }).at(randomCheckboxIndex).simulate(`change`)
     expect(mockCallback.mock.calls.length).toBe(1)
-    expect(mockCallback.mock.calls[0]).toEqual([props.facets[randomCheckboxIndex].group, [props.facets[randomCheckboxIndex]]])
+    expect(mockCallback.mock.calls[0]).toEqual([
+      props.facets[randomCheckboxIndex].group,
+      [props.facets[randomCheckboxIndex]]])
     wrapper.find({ type: `checkbox` }).at(randomCheckboxIndex).simulate(`change`)
     expect(mockCallback.mock.calls.length).toBe(2)
     expect(mockCallback.mock.calls[1]).toEqual([props.facets[randomCheckboxIndex].group, []])
