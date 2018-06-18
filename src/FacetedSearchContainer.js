@@ -90,11 +90,10 @@ class FacetedSearchContainer extends React.Component {
   }
 
   render() {
-    const {results} = this.props
-    const {checkboxFacetGroups} = this.props
+    const {facets} = this.state
 
-    const {ResultElementClass, resultsMessage} = this.props
-    const {facets, selectedFacets} = this.state
+    const {checkboxFacetGroups, ResultElementClass, resultsMessage} = this.props
+    const {selectedFacets} = this.state
 
     return(
       <div className={`row expanded`}>
@@ -103,7 +102,8 @@ class FacetedSearchContainer extends React.Component {
         </div>
 
         <div className={`small-12 medium-10 columns`}>
-          <FilterList {...{results, selectedFacets, resultsMessage, ResultElementClass}} />
+          <FilterList {...{resultsMessage, ResultElementClass}}
+                      filteredResults={this._filterResults(selectedFacets)}/>
         </div>
       </div>
     )
