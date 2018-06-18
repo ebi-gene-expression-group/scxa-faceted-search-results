@@ -4,7 +4,7 @@ import Enzyme from 'enzyme'
 import {shallow} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
-import {getRandomInt, episodes, EpisodeCard} from './TestUtils'
+import {episodes, EpisodeCard} from './TestUtils'
 
 import FilterList from '../src/FilterList'
 
@@ -17,7 +17,7 @@ const props = {
 
 describe(`FilterList`, () => {
   test(`renders as many components of ResultElementClass as filtered results`, () => {
-    const wrapper = shallow(<FilterList {...props} />)
+    const wrapper = shallow(<FilterList {...props} filteredResults={episodes.filter(() => Math.random() > 0.5)}/>)
     expect(wrapper.find(props.ResultElementClass)).toHaveLength(props.filteredResults.length)
   })
 
