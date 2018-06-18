@@ -159,6 +159,79 @@ const episodes = [
   }
 ]
 
+const episodesFacets = [
+  {
+    group: `Season`,
+    value: `1`,
+    label: `Season 1`,
+    disabled: false
+  },
+  {
+    group: `Season`,
+    value: `2`,
+    label: `Season 2`,
+    disabled: false
+  },
+  {
+    group: `Season`,
+    value: `3`,
+    label: `Season 3`,
+    disabled: false
+  },
+  {
+    group: `Planet`,
+    value: `gazorpazorp`,
+    label: `Gazorpazorp`,
+    disabled: false
+  },
+  {
+    group: `Planet`,
+    value: `squanch`,
+    label: `Squanch`,
+    disabled: false
+  },
+  {
+    group: `Planet`,
+    value: `buttworld`,
+    label: `Buttworld`,
+    disabled: false
+  },
+  {
+    group: `Guest character`,
+    value: `gwendolyn`,
+    label: `Gwendolyn`,
+    disabled: false
+  },
+  {
+    group: `Guest character`,
+    value: `ma-sha`,
+    label: `Ma-Sha`,
+    disabled: false
+  },
+  {
+    group: `Guest character`,
+    value: `birdperson`,
+    label: `Birdperson`,
+    disabled: false
+  },
+  {
+    group: `Guest character`,
+    value: `squanchy`,
+    label: `Squanchy`,
+    disabled: false
+  },
+  {
+    group: `Guest character`,
+    value: `abradolf_lincler`,
+    label: `Abradolf Lincler`,
+    disabled: false
+  },
+  {
+    group: `Guest character`,
+    value: `ricktiminus_sancheziminius`,
+    label: `Ricktiminus Sancheziminius`,
+    disabled: false
+  }
+]
 
-
-export {getRandomInt, vindicators, episodes, EpisodeCard}
+export {getRandomInt, vindicators, episodes, episodesFacets, EpisodeCard}

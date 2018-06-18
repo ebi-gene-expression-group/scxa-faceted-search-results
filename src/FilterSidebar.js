@@ -11,7 +11,8 @@ import {FacetPropTypes} from './ResultPropTypes'
 const FilterSidebar = ({facets, checkboxFacetGroups, onChange}) => {
   const facetGroups =
     _(facets)
-      .groupBy('group')
+      .sortBy([`group`, `label`])
+      .groupBy(`group`)
       .toPairs()
       .partition((facetGroup) => checkboxFacetGroups.includes(facetGroup[0]))
       .value()
