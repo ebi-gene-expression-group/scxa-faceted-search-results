@@ -15,6 +15,7 @@ class FacetedSearchContainer extends React.Component {
       facets:
         _(props.results)
           .flatMap(`facets`)
+          .compact()   // lodash will emit undefined if `facets` doesn’t exist :/
           .uniqWith(_.isEqual)
           .map((facet) => ({...facet, disabled: false}))
           .value(),
@@ -97,9 +98,12 @@ class FacetedSearchContainer extends React.Component {
 
     return(
       <div className={`row expanded`}>
-        <div className={`small-12 medium-2 columns`}>
-          <FilterSidebar {...{facets, checkboxFacetGroups}} onChange={this._handleChange}/>
-        </div>
+        {
+          facets.length > 0 &&
+          <div className={`small-12 medium-2 columns`}>
+            <FilterSidebar {...{facets, checkboxFacetGroups}} onChange={this._handleChange}/>
+          </div>
+        }
 
         <div className={`small-12 medium-10 columns`}>
           <FilterList {...{resultsMessage, ResultElementClass}}
