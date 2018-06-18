@@ -4,8 +4,7 @@ import Enzyme from 'enzyme'
 import {mount} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
-import randomWords from 'random-words'
-import {getRandomInt, episodesFacets} from './TestUtils'
+import {getRandomInt, episodes} from './TestUtils'
 
 import FilterSidebar from '../src/FilterSidebar'
 import CheckboxFacetGroup from '../src/facetgroups/CheckboxFacetGroup'
@@ -14,39 +13,31 @@ import MultiselectDropdownFacetGroup from '../src/facetgroups/MultiselectDropdow
 Enzyme.configure({ adapter: new Adapter() })
 
 describe(`FilterSidebar`, () => {
-  const NUMBER_OF_GROUPS = 4
-  const NUMBER_OF_FACETS = 20
-
-  const groups = randomWords({min: 2, max: 4})
-
-  const facets =
-    [...Array(NUMBER_OF_FACETS).keys()]
-      .map(
-        () => ({
-          group: groups[getRandomInt(0, groups.length)],
-          label: randomWords(),
-          value: randomWords(),
-          disabled: false
-        }))
-
+  const allFacets = episodes.reduce((acc, episode) => acc.concat(episode.facets), [])
+  const uniqueFacets =
+    allFacets
+      .filter((facet, index) => allFacets.findIndex((thatFacet) => facet.value === thatFacet.value) === index)
+      .map((facet) => ({
+        ...facet,
+        disabled: false
+      }))
 
   const props = {
-    facets: facets,
-    checkboxFacetGroups: [groups[getRandomInt(0, groups.length)]],
+    facets: uniqueFacets,
+    checkboxFacetGroups: [`Season`],
     onChange: () => {}
   }
 
-  test(`shows checbox facet groups above dropdown filters`, () => {
-    const wrapper = mount(<FilterSidebar {...props} />)
-    expect(wrapper.find(`h4`).first().text()).toEqual(props.checkboxFacetGroups[0])
-    expect(wrapper.find(`h4`).last().text()).not.toEqual(props.checkboxFacetGroups[0])
+  test(`shows checkbox facet groups above dropdown filters`, () => {
+    const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
+    const randomCheckboxFacetGroup = groups[getRandomInt(0, groups.length)]
+    const wrapper = mount(<FilterSidebar {...props} checkboxFacetGroups={[randomCheckboxFacetGroup]} />)
+    expect(wrapper.find(`h4`).first().text()).toEqual(randomCheckboxFacetGroup)
+    expect(wrapper.find(`h4`).last().text()).not.toEqual(randomCheckboxFacetGroup)
   }),
 
   test(`matches snapshot`, () => {
-    const tree =
-      renderer
-        .create(<FilterSidebar facets={episodesFacets} checkboxFacetGroups={[`Season`]} onChange={() => {}}/>)
-        .toJSON()
+    const tree = renderer.create(<FilterSidebar {...props}/>).toJSON()
     expect(tree).toMatchSnapshot()
   })
 })

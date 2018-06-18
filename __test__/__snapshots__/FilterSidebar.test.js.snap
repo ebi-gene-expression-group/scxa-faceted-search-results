@@ -67,7 +67,7 @@ Array [
         className="css-1uvvha"
         role="status"
       >
-        0 results available.
+        6 results available.
       </span>
       <div
         className="css-12emboz"
@@ -102,7 +102,7 @@ Array [
                 autoComplete="off"
                 autoCorrect="off"
                 disabled={false}
-                id="react-select-3-input"
+                id="react-select-4-input"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -170,7 +170,7 @@ Array [
         className="css-1uvvha"
         role="status"
       >
-        0 results available.
+        3 results available.
       </span>
       <div
         className="css-12emboz"
@@ -205,7 +205,7 @@ Array [
                 autoComplete="off"
                 autoCorrect="off"
                 disabled={false}
-                id="react-select-4-input"
+                id="react-select-5-input"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
