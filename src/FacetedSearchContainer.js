@@ -11,53 +11,97 @@ class FacetedSearchContainer extends React.Component {
   constructor(props) {
     super(props)
 
-    // TODO Build initial state of checked filters from props if wrapping in React Router to make it RESTful
     this.state = {
-      selectedFacets: {}
+      facets:
+        _(props.results)
+          .flatMap(`facets`)
+          .uniqWith(_.isEqual)
+          .map((facet) => ({...facet, disabled: false}))
+          .value(),
+      selectedFacets: {}  // TODO (?) Build initial state of checked filters from props if wrapped in React Router
     }
 
     this._handleChange = this._handleChange.bind(this)
   }
 
-  _handleChange(facetGroupName, facets) {
+  _filterResults(facets) {
+    return this.props.results.filter((result) =>
+      // Leave the results that, for every group, have at least one matching property within that group
+      // Note: every returns true for empty arrays
+      Object.entries(facets)
+        .every(
+          ([facetGroup, facetValues]) =>
+            result.facets.some(
+              (resultFacet) =>
+                facetGroup === resultFacet.group && facetValues.map(f => f.value).includes(resultFacet.value))))
+  }
+
+  _hasNoResults(selectedFacets, additionalFacet) {
+    const mergedFacets =
+      _.mergeWith(
+        _.defaultsDeep({}, selectedFacets),
+        {[additionalFacet.group]: additionalFacet},
+        (objValue, srcValue) => _.uniq((objValue || []).concat(srcValue))
+      )
+
+    return this._filterResults(mergedFacets).length === 0
+  }
+
+  _handleChange(facetGroup, selectedFacetsInGroup) {
     const _selectedFacets = _.defaultsDeep({}, this.state.selectedFacets)
-    _selectedFacets[facetGroupName] = facets.map((facet) => facet.value)  // Store values only, discard labels
+    _selectedFacets[facetGroup] = selectedFacetsInGroup
 
     const nextSelectedFacets =
-      Object.keys(_selectedFacets)
-        .filter((key) => _selectedFacets[key] && _selectedFacets[key].length > 0)
-        .reduce((acc, key) => {
-          acc[key] = _selectedFacets[key]
-          return acc
-        }, {})
+       Object.keys(_selectedFacets)
+         .filter((key) => _selectedFacets[key] && _selectedFacets[key].length > 0)
+         .reduce((acc, key) => {
+           acc[key] = _selectedFacets[key]
+           return acc
+         }, {})
+
+     const previousNumberOfSelectedFacetsInGroup = this.state.selectedFacets[facetGroup] ?
+       this.state.selectedFacets[facetGroup].length : 0
+
+    // if (_selectedFacets[facetGroup].length == previousNumberOfSelectedFacetsInGroup) // Unreachable !
+    const nextFacets = _selectedFacets[facetGroup].length > previousNumberOfSelectedFacetsInGroup ?
+      // Facet added: check enabled facets in other groups and disable them if they produce no results
+      _.cloneDeep(this.state.facets)
+        .map((facet) => ({
+          ...facet,
+          disabled:
+            facet.group !== facetGroup ?
+              facet.disabled ? true : this._hasNoResults(nextSelectedFacets, facet) :
+              facet.disabled
+        })) :
+        // Facet removed: check disabled facets in other groups and enable them if they produce results
+        _.cloneDeep(this.state.facets)
+          .map((facet) => ({
+            ...facet,
+            disabled:
+              facet.group !== facetGroup ?
+                facet.disabled ? this._hasNoResults(nextSelectedFacets, facet) : false :
+                facet.disabled
+          }))
 
     this.setState({
-      selectedFacets: nextSelectedFacets
+       facets: nextFacets,
+       selectedFacets: nextSelectedFacets
     })
   }
 
   render() {
     const {results} = this.props
-    const {selectedFacets} = this.state
-
     const {checkboxFacetGroups} = this.props
-    const {ResultElementClass, resultsMessage} = this.props
 
-    const resultsHaveFacets =
-      results.some((result) =>
-        result.facets &&
-        result.facets.some((facet) =>
-          typeof(facet.group) === `string` && typeof(facet.value) === `string` && typeof(`label`) === `string` &&
-          facet.group.length && facet.value.length && facet.value.length))
+    const {ResultElementClass, resultsMessage} = this.props
+    const {facets, selectedFacets} = this.state
 
     return(
       <div className={`row expanded`}>
-        { resultsHaveFacets &&
-          <div className={`small-12 medium-2 columns`}>
-            <FilterSidebar {...{results, selectedFacets, checkboxFacetGroups}}
-                           onChange={this._handleChange}/>
-          </div>
-        }
+        <div className={`small-12 medium-2 columns`}>
+          <FilterSidebar {...{facets, checkboxFacetGroups}} onChange={this._handleChange}/>
+        </div>
+
         <div className={`small-12 medium-10 columns`}>
           <FilterList {...{results, selectedFacets, resultsMessage, ResultElementClass}} />
         </div>
