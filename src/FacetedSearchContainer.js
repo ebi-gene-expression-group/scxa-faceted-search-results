@@ -48,6 +48,28 @@ class FacetedSearchContainer extends React.Component {
     return this._filterResults(mergedFacets).length === 0
   }
 
+  _disableEnabledFacetsWithNoResults(selectedFacets, facetGroup) {
+    return _.cloneDeep(this.state.facets)
+      .map((facet) => ({
+        ...facet,
+        disabled:
+          facet.group !== facetGroup ?
+            facet.disabled ? true : this._hasNoResults(selectedFacets, facet) :
+            facet.disabled
+      }))
+  }
+
+  _enableDisabledFacetsWithResults(selectedFacets, facetGroup) {
+    return _.cloneDeep(this.state.facets)
+      .map((facet) => ({
+        ...facet,
+        disabled:
+          facet.group !== facetGroup ?
+            facet.disabled ? this._hasNoResults(selectedFacets, facet) : false :
+            facet.disabled
+      }))
+  }
+
   _handleChange(facetGroup, selectedFacetsInGroup) {
     const _selectedFacets = _.defaultsDeep({}, this.state.selectedFacets)
     _selectedFacets[facetGroup] = selectedFacetsInGroup
@@ -60,29 +82,27 @@ class FacetedSearchContainer extends React.Component {
            return acc
          }, {})
 
-     const previousNumberOfSelectedFacetsInGroup = this.state.selectedFacets[facetGroup] ?
-       this.state.selectedFacets[facetGroup].length : 0
+    const previousNumberOfSelectedFacetsInGroup = this.state.selectedFacets[facetGroup] ?
+      this.state.selectedFacets[facetGroup].length : 0
 
-    // if (_selectedFacets[facetGroup].length == previousNumberOfSelectedFacetsInGroup) // Unreachable !
-    const nextFacets = _selectedFacets[facetGroup].length > previousNumberOfSelectedFacetsInGroup ?
-      // Facet added: check enabled facets in other groups and disable them if they produce no results
-      _.cloneDeep(this.state.facets)
-        .map((facet) => ({
-          ...facet,
-          disabled:
-            facet.group !== facetGroup ?
-              facet.disabled ? true : this._hasNoResults(nextSelectedFacets, facet) :
-              facet.disabled
-        })) :
-        // Facet removed: check disabled facets in other groups and enable them if they produce results
-        _.cloneDeep(this.state.facets)
-          .map((facet) => ({
-            ...facet,
-            disabled:
-              facet.group !== facetGroup ?
-                facet.disabled ? this._hasNoResults(nextSelectedFacets, facet) : false :
-                facet.disabled
-          }))
+    let nextFacets = {}
+    if (_selectedFacets[facetGroup].length > previousNumberOfSelectedFacetsInGroup) {
+      if (_selectedFacets[facetGroup].length === 1) {
+        // First facet in group selected: less results, disable enabled facets
+        nextFacets = this._disableEnabledFacetsWithNoResults(nextSelectedFacets, facetGroup)
+      } else {
+        // Add a second or subsequent facet to a group: more results, enable disabled facets
+        nextFacets = this._enableDisabledFacetsWithResults(nextSelectedFacets, facetGroup)
+      }
+    } else {
+      if (_selectedFacets[facetGroup].length === 0) {
+        // No facets in group selected: more results, enable disabled facets
+        nextFacets = this._enableDisabledFacetsWithResults(nextSelectedFacets, facetGroup)
+      } else {
+        // Facet has been deselected but others in group remain: less results, disable enabled facets
+        nextFacets = this._disableEnabledFacetsWithNoResults(nextSelectedFacets, facetGroup)
+      }
+    }
 
     this.setState({
        facets: nextFacets,
