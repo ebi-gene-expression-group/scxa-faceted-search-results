@@ -27,10 +27,20 @@ describe(`FacetedSearchContainer`, () => {
     expect(wrapperWithoutFacets.find(FilterSidebar)).toHaveLength(0)
   })
 
-  test(`clicking on facets works`, () => {
+  test(`clicking to select/unselect a single facet in a group works`, () => {
     const wrapper = mount(<FacetedSearchContainer {...props} />)
-    wrapper.find(FilterSidebar).find({ type: `checkbox` }).first(0).simulate(`change`)
+    wrapper.find(FilterSidebar).find({ type: `checkbox` }).first().simulate(`change`)
     expect(wrapper.find(EpisodeCard).length).toBeLessThan(props.results.length)
+    wrapper.find(FilterSidebar).find({ type: `checkbox` }).first().simulate(`change`)
+    expect(wrapper.find(EpisodeCard).length).toBe(props.results.length)
+  })
+
+  test(`clicking on a second facet works`, () => {
+    const wrapper = mount(<FacetedSearchContainer {...props} />)
+    wrapper.find(FilterSidebar).find({ type: `checkbox` }).first().simulate(`change`)
+    const numberOfResultsAfterFirstClick = wrapper.find(EpisodeCard).length
+    wrapper.find(FilterSidebar).find({ type: `checkbox` }).at(1).simulate(`change`)
+    expect(wrapper.find(EpisodeCard).length).toBeGreaterThan(numberOfResultsAfterFirstClick)
   })
 
   test(`doesn’t display duplicated facets`, () => {
