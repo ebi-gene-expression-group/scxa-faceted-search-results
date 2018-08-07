@@ -65,6 +65,7 @@ class FetchLoader extends React.Component {
                                   resultsMessage={resultsMessage}/> :
           <div className={`row column`}>
             <p>{noResultsMessage}</p>
+            { data.reason && <p>{data.reason}</p> }
           </div>
     )
   }
