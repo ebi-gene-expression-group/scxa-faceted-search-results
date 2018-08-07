@@ -48,7 +48,7 @@ class FetchLoader extends React.Component {
   }
 
   render() {
-    const {noResultsMessage, resultsMessage} = this.props
+    const {ResultElementClass, noResultsMessage, resultsMessage, species} = this.props
     const {data, loading, error} = this.state
 
     return(
@@ -60,8 +60,8 @@ class FetchLoader extends React.Component {
         </div> :
         data.results && data.results.length > 0 ?
           <FacetedSearchContainer {...data}
-                                  selectedSpecies = {this.props.species}
-                                  ResultElementClass={EpisodeCard}
+                                  selectedSpecies = {species}
+                                  ResultElementClass={ResultElementClass}
                                   resultsMessage={resultsMessage}/> :
           <div className={`row column`}>
             <p>{noResultsMessage}</p>
