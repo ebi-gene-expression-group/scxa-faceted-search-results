@@ -119,6 +119,7 @@ class FetchLoader extends React.Component {
 FetchLoader.propTypes = {
   host: PropTypes.string.isRequired,
   resource: PropTypes.string.isRequired,
+  ResultElementClass: PropTypes.func.isRequired,
   noResultsMessage: PropTypes.string,
   resultsMessage: PropTypes.string
 }
