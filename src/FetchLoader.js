@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import URI from 'urijs'
+import EpisodeCard from './EpisodeCard'
 
 import FacetedSearchContainer from './FacetedSearchContainer'
 
@@ -47,9 +48,9 @@ class FetchLoader extends React.Component {
   }
 
   render() {
-    const {ResultElementClass, noResultsMessage, resultsMessage} = this.props
+    const {noResultsMessage, resultsMessage} = this.props
+    const ResultElementClass = EpisodeCard;
     const {data, loading, error} = this.state
-
     return(
       error ?
         <CalloutAlert error={error} /> :
@@ -59,6 +60,7 @@ class FetchLoader extends React.Component {
         </div> :
         data.results && data.results.length > 0 ?
           <FacetedSearchContainer {...data}
+                                  selectedSpecies = {this.props.species}
                                   ResultElementClass={ResultElementClass}
                                   resultsMessage={resultsMessage}/> :
           <div className={`row column`}>
@@ -117,7 +119,6 @@ class FetchLoader extends React.Component {
 FetchLoader.propTypes = {
   host: PropTypes.string.isRequired,
   resource: PropTypes.string.isRequired,
-  ResultElementClass: PropTypes.func.isRequired,
   noResultsMessage: PropTypes.string,
   resultsMessage: PropTypes.string
 }
