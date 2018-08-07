@@ -110,12 +110,32 @@ class FacetedSearchContainer extends React.Component {
     })
   }
 
+  componentWillMount(){
+    if(this.props.selectedSpecies.length!==0){
+     this.setState({
+       selectedFacets : {
+        Species : [{
+          group: "Species",
+          label: this.props.selectedSpecies,
+          value: this.props.selectedSpecies.toLowerCase(),
+          disabled : false
+        }]
+       }
+     })
+    }
+     else{
+      this.setState({
+        selectedFacets :{}
+      })
+     }
+   }
+
   render() {
     const {facets} = this.state
 
     const {checkboxFacetGroups, ResultElementClass, resultsMessage} = this.props
     const {selectedFacets} = this.state
-
+    
     return(
       <div className={`row expanded`}>
         {
