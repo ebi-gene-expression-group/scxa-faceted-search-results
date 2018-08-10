@@ -16,7 +16,8 @@ Enzyme.configure({ adapter: new Adapter() })
 const props = {
   results: episodes,
   checkboxFacetGroups: [`Season`],
-  ResultElementClass: EpisodeCard
+  ResultElementClass: EpisodeCard,
+  selectedSpecies: ``
 }
 
 describe(`FacetedSearchContainer`, () => {
@@ -67,5 +68,14 @@ describe(`FacetedSearchContainer`, () => {
   test(`matches snapshot`, () => {
     const tree = renderer.create(<FacetedSearchContainer {...props} />).toJSON()
     expect(tree).toMatchSnapshot()
+  })
+
+  test(`selectedSpecies is passed`, () =>{
+    const testStr = Math.random().toString(36).substring(7);
+    const wrapper = mount(<FacetedSearchContainer {...props} selectedSpecies={testStr} />)
+    console.log(testStr)
+    expect(wrapper.state(`selectedFacets`)).toHaveProperty(`Species`)
+    expect(wrapper.state(`selectedFacets`).Species[0]).toHaveProperty(`value`, testStr)
+
   })
 })
