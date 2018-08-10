@@ -11,15 +11,36 @@ class FacetedSearchContainer extends React.Component {
   constructor(props) {
     super(props)
 
-    this.state = {
-      facets:
+
+    if(this.props.selectedSpecies.length!==0){
+     this.state = {
+        facets:
         _(props.results)
           .flatMap(`facets`)
           .compact()   // lodash will emit undefined if `facets` doesn’t exist :/
           .uniqWith(_.isEqual)
           .map((facet) => ({...facet, disabled: false}))
           .value(),
-      selectedFacets: {}  // TODO (?) Build initial state of checked filters from props if wrapped in React Router
+       selectedFacets : {
+        Species : [{
+          group: "Species",
+          label: this.props.selectedSpecies,
+          value: this.props.selectedSpecies.toLowerCase(),
+          disabled : false
+        }]
+       }
+     }
+    }else{
+      this.state = {
+        facets:
+        _(props.results)
+          .flatMap(`facets`)
+          .compact()   // lodash will emit undefined if `facets` doesn’t exist :/
+          .uniqWith(_.isEqual)
+          .map((facet) => ({...facet, disabled: false}))
+          .value(),
+        selectedFacets :{}
+      }
     }
 
     this._handleChange = this._handleChange.bind(this)
@@ -109,26 +130,6 @@ class FacetedSearchContainer extends React.Component {
        selectedFacets: nextSelectedFacets
     })
   }
-
-  componentWillMount(){
-    if(this.props.selectedSpecies.length!==0){
-     this.setState({
-       selectedFacets : {
-        Species : [{
-          group: "Species",
-          label: this.props.selectedSpecies,
-          value: this.props.selectedSpecies.toLowerCase(),
-          disabled : false
-        }]
-       }
-     })
-    }
-     else{
-      this.setState({
-        selectedFacets :{}
-      })
-     }
-   }
 
   render() {
     const {facets} = this.state
