@@ -11,9 +11,7 @@ class FacetedSearchContainer extends React.Component {
   constructor(props) {
     super(props)
 
-
-    if(this.props.selectedSpecies.length!==0){
-     this.state = {
+    this.state = {
         facets:
         _(props.results)
           .flatMap(`facets`)
@@ -21,28 +19,17 @@ class FacetedSearchContainer extends React.Component {
           .uniqWith(_.isEqual)
           .map((facet) => ({...facet, disabled: false}))
           .value(),
-       selectedFacets : {
-        Species : [{
-          group: "Species",
-          label: this.props.selectedSpecies,
-          value: this.props.selectedSpecies.toLowerCase(),
-          disabled : false
-        }]
-       }
-     }
-    }else{
-      this.state = {
-        facets:
-        _(props.results)
-          .flatMap(`facets`)
-          .compact()   // lodash will emit undefined if `facets` doesn’t exist :/
-          .uniqWith(_.isEqual)
-          .map((facet) => ({...facet, disabled: false}))
-          .value(),
-        selectedFacets :{}
-      }
+        selectedFacets : this.props.selectedSpecies.length!==0 ?
+          {
+            Species : [{
+              group: "Species",
+              label: this.props.selectedSpecies,
+              value: this.props.selectedSpecies.toLowerCase(),
+              disabled : false
+            }]
+          } : {}
     }
-
+    
     this._handleChange = this._handleChange.bind(this)
   }
 
