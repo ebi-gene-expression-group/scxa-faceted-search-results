@@ -25,14 +25,18 @@ describe(`FilterSidebar`, () => {
   const props = {
     facets: uniqueFacets,
     checkboxFacetGroups: [`Season`],
-    onChange: () => {}
+    onChange: () => {},
+    selectedSpecies: ''
   }
 
   test(`shows checkbox facet groups above dropdown filters`, () => {
     const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
     const randomCheckboxFacetGroup = groups[getRandomInt(0, groups.length)]
     const wrapper = mount(<FilterSidebar {...props} checkboxFacetGroups={[randomCheckboxFacetGroup]} />)
-    expect(wrapper.find(`h4`).first().text()).toEqual(randomCheckboxFacetGroup)
+    
+    if(props.selectedSpecies!==''){
+        expect(wrapper.find(`h4`).first().text()).toEqual(randomCheckboxFacetGroup)
+    }
     expect(wrapper.find(`h4`).last().text()).not.toEqual(randomCheckboxFacetGroup)
   }),
 
