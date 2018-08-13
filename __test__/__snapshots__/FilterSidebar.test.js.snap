@@ -6,55 +6,6 @@ Array [
     className="padding-bottom-xlarge"
   >
     <h4>
-      Season
-    </h4>
-    <div>
-      <input
-        checked={false}
-        disabled={false}
-        onChange={[Function]}
-        type="checkbox"
-        value="1"
-      />
-      <label
-        style={Object {}}
-      >
-        Season 1
-      </label>
-    </div>
-    <div>
-      <input
-        checked={false}
-        disabled={false}
-        onChange={[Function]}
-        type="checkbox"
-        value="2"
-      />
-      <label
-        style={Object {}}
-      >
-        Season 2
-      </label>
-    </div>
-    <div>
-      <input
-        checked={false}
-        disabled={false}
-        onChange={[Function]}
-        type="checkbox"
-        value="3"
-      />
-      <label
-        style={Object {}}
-      >
-        Season 3
-      </label>
-    </div>
-  </div>,
-  <div
-    className="padding-bottom-xlarge"
-  >
-    <h4>
       Guest character
     </h4>
     <div

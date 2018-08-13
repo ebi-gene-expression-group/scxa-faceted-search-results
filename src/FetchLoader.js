@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import URI from 'urijs'
-import EpisodeCard from './EpisodeCard'
 
 import FacetedSearchContainer from './FacetedSearchContainer'
 
