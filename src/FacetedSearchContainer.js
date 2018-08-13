@@ -134,7 +134,7 @@ class FacetedSearchContainer extends React.Component {
   render() {
     const {facets} = this.state
 
-    const {checkboxFacetGroups, ResultElementClass, resultsMessage} = this.props
+    const {checkboxFacetGroups, ResultElementClass, resultsMessage, selectedSpecies} = this.props
     const {selectedFacets} = this.state
     
     return(
@@ -142,14 +142,14 @@ class FacetedSearchContainer extends React.Component {
         {
           facets.length > 0 &&
           <div className={`small-12 medium-4 large-3 columns`}>
-            <FilterSidebar {...{facets, checkboxFacetGroups}} onChange={this._handleChange}/>
+            <FilterSidebar {...{facets, checkboxFacetGroups,selectedSpecies}} onChange={this._handleChange}/>
           </div>
-        }
-
-        <div className={`small-12 medium-8 large-9 columns`}>
+        } 
+        
+          <div className={`small-12 medium-8 large-9 columns`}>
           <FilterList {...{resultsMessage, ResultElementClass}}
                       filteredResults={this._filterResults(selectedFacets)}/>
-        </div>
+          </div>
       </div>
     )
   }

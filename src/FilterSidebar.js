@@ -8,7 +8,7 @@ import MultiselectDropdownFacetGroup from './facetgroups/MultiselectDropdownFace
 
 import {FacetPropTypes} from './ResultPropTypes'
 
-const FilterSidebar = ({facets, checkboxFacetGroups, onChange}) => {
+const FilterSidebar = ({facets, checkboxFacetGroups, onChange,selectedSpecies}) => {
   const facetGroups =
     _(facets)
       .sortBy([`group`, `label`])
@@ -20,11 +20,13 @@ const FilterSidebar = ({facets, checkboxFacetGroups, onChange}) => {
   // Facets as checkboxes go first by design
   return(
     [
+      selectedSpecies == '' &&
       facetGroups[0]
         .map((facetGroup) => <CheckboxFacetGroup facetGroupName={facetGroup[0]}
                                                  facets={facetGroup[1]}
                                                  onChange={onChange}
                                                  key={facetGroup[0]} />),
+    
       facetGroups[1]
         .map((facetGroup) => <MultiselectDropdownFacetGroup facetGroupName={facetGroup[0]}
                                                             facets={facetGroup[1]}
