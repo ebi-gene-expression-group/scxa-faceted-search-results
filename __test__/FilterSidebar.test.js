@@ -34,9 +34,7 @@ describe(`FilterSidebar`, () => {
     const randomCheckboxFacetGroup = groups[getRandomInt(0, groups.length)]
     const wrapper = mount(<FilterSidebar {...props} checkboxFacetGroups={[randomCheckboxFacetGroup]} />)
     
-    if(props.selectedSpecies!==''){
-        expect(wrapper.find(`h4`).first().text()).toEqual(randomCheckboxFacetGroup)
-    }
+    expect(wrapper.find(`h4`).first().text()).toEqual(randomCheckboxFacetGroup)
     expect(wrapper.find(`h4`).last().text()).not.toEqual(randomCheckboxFacetGroup)
   }),
 
