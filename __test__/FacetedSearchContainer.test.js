@@ -72,10 +72,15 @@ describe(`FacetedSearchContainer`, () => {
 
   test(`selectedSpecies is passed`, () =>{
     const testStr = Math.random().toString(36).substring(7);
+    const allSpecies = ``;
     const wrapper = mount(<FacetedSearchContainer {...props} selectedSpecies={testStr} />)
-    console.log(testStr)
     expect(wrapper.state(`selectedFacets`)).toHaveProperty(`Species`)
     expect(wrapper.state(`selectedFacets`).Species[0]).toHaveProperty(`value`, testStr)
+  })
 
+  test(`selectedSpecies is not defined`,() =>{
+    const allSpecies = ``;
+    const wrapper = mount(<FacetedSearchContainer {...props} selectedSpecies={allSpecies} />)
+    expect(wrapper.find(CheckboxFacetGroup).exists()).toBe(true)
   })
 })
