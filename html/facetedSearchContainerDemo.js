@@ -137,7 +137,8 @@ const render = (target) => {
     <FacetedSearchContainer results={episodes}
                             ResultElementClass={EpisodeCard}
                             checkboxFacetGroups={[`Season`]}
-                            resultsMessage={`Search results`}/>,
+                            resultsMessage={`Search results`}
+                            selectedSpecies={``}/>,
     document.getElementById(target))
 }
 
