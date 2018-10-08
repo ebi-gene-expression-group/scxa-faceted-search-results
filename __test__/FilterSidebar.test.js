@@ -32,9 +32,17 @@ describe(`FilterSidebar`, () => {
     const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
     const randomCheckboxFacetGroup = groups[getRandomInt(0, groups.length)]
     const wrapper = mount(<FilterSidebar {...props} checkboxFacetGroups={[randomCheckboxFacetGroup]} />)
-    expect(wrapper.find(`h4`).first().text()).toEqual(randomCheckboxFacetGroup)
-    expect(wrapper.find(`h4`).last().text()).not.toEqual(randomCheckboxFacetGroup)
-  }),
+    expect(wrapper.find(`h4`).first().text()).toEqual(expect.stringMatching(randomCheckboxFacetGroup))
+    expect(wrapper.find(`h4`).last().text()).not.toEqual(expect.stringMatching(randomCheckboxFacetGroup))
+    expect(wrapper.find(`span`).first().text()).toEqual(`?`)
+  })
+
+  test(`checks weather tooltip exists`, () => {
+    const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
+    const randomCheckboxFacetGroup = groups[getRandomInt(0, groups.length)]
+    const wrapper = mount(<FilterSidebar {...props} checkboxFacetGroups={[randomCheckboxFacetGroup]} />)
+    expect(wrapper.find(`sup`).first().html()).toEqual(expect.stringMatching(`data-tooltip`))
+  })
 
   test(`matches snapshot`, () => {
     const tree = renderer.create(<FilterSidebar {...props}/>).toJSON()

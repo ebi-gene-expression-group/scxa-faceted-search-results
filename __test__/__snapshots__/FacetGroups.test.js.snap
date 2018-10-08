@@ -6,6 +6,21 @@ exports[`CheckboxFacetGroup matches snapshot 1`] = `
 >
   <h4>
     Vindicators
+    <span>
+      <sup
+        aria-haspopup="true"
+        className="has-tip tip-right"
+        data-tooltip={true}
+        style={
+          Object {
+            "background": "white",
+            "border": "none",
+          }
+        }
+      >
+        ?
+      </sup>
+    </span>
   </h4>
   <div>
     <input

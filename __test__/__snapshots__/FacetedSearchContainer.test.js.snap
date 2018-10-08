@@ -12,6 +12,21 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
     >
       <h4>
         Season
+        <span>
+          <sup
+            aria-haspopup="true"
+            className="has-tip tip-right"
+            data-tooltip={true}
+            style={
+              Object {
+                "background": "white",
+                "border": "none",
+              }
+            }
+          >
+            ?
+          </sup>
+        </span>
       </h4>
       <div>
         <input
@@ -61,6 +76,21 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
     >
       <h4>
         Guest character
+        <span>
+          <sup
+            aria-haspopup="true"
+            className="has-tip tip-right"
+            data-tooltip={true}
+            style={
+              Object {
+                "background": "white",
+                "border": "none",
+              }
+            }
+          >
+            ?
+          </sup>
+        </span>
       </h4>
       <div
         className="css-10nd86i"
@@ -164,6 +194,21 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
     >
       <h4>
         Planet
+        <span>
+          <sup
+            aria-haspopup="true"
+            className="has-tip tip-right"
+            data-tooltip={true}
+            style={
+              Object {
+                "background": "white",
+                "border": "none",
+              }
+            }
+          >
+            ?
+          </sup>
+        </span>
       </h4>
       <div
         className="css-10nd86i"

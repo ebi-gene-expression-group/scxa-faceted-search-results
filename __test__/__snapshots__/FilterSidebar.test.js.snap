@@ -7,6 +7,21 @@ Array [
   >
     <h4>
       Season
+      <span>
+        <sup
+          aria-haspopup="true"
+          className="has-tip tip-right"
+          data-tooltip={true}
+          style={
+            Object {
+              "background": "white",
+              "border": "none",
+            }
+          }
+        >
+          ?
+        </sup>
+      </span>
     </h4>
     <div>
       <input
@@ -56,6 +71,21 @@ Array [
   >
     <h4>
       Guest character
+      <span>
+        <sup
+          aria-haspopup="true"
+          className="has-tip tip-right"
+          data-tooltip={true}
+          style={
+            Object {
+              "background": "white",
+              "border": "none",
+            }
+          }
+        >
+          ?
+        </sup>
+      </span>
     </h4>
     <div
       className="css-10nd86i"
@@ -102,7 +132,7 @@ Array [
                 autoComplete="off"
                 autoCorrect="off"
                 disabled={false}
-                id="react-select-4-input"
+                id="react-select-6-input"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
@@ -159,6 +189,21 @@ Array [
   >
     <h4>
       Planet
+      <span>
+        <sup
+          aria-haspopup="true"
+          className="has-tip tip-right"
+          data-tooltip={true}
+          style={
+            Object {
+              "background": "white",
+              "border": "none",
+            }
+          }
+        >
+          ?
+        </sup>
+      </span>
     </h4>
     <div
       className="css-10nd86i"
@@ -205,7 +250,7 @@ Array [
                 autoComplete="off"
                 autoCorrect="off"
                 disabled={false}
-                id="react-select-5-input"
+                id="react-select-7-input"
                 onBlur={[Function]}
                 onChange={[Function]}
                 onFocus={[Function]}
