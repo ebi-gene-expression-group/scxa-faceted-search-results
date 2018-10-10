@@ -23,6 +23,7 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
                 "border": "none",
               }
             }
+            title="Season Tooltip"
           >
             ?
           </sup>
@@ -87,6 +88,7 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
                 "border": "none",
               }
             }
+            title="Guest character Tooltip"
           >
             ?
           </sup>
@@ -205,6 +207,7 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
                 "border": "none",
               }
             }
+            title="Planet Tooltip"
           >
             ?
           </sup>

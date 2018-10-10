@@ -40,22 +40,26 @@ const episodes = [
       {
         group: `Planet`,
         value: `gazorpazorp`,
-        label: `Gazorpazorp`
+        label: `Gazorpazorp`,
+        description: `Planet Tooltip`
       },
       {
         group: `Guest character`,
         value: `gwendolyn`,
-        label: `Gwendolyn`
+        label: `Gwendolyn`,
+        description: `Guest character Tooltip`
       },
       {
         group: `Guest character`,
         value: `ma-sha`,
-        label: `Ma-Sha`
+        label: `Ma-Sha`,
+        description: `Guest character Tooltip`
       },
       {
         group: `Season`,
         value: `1`,
-        label: `Season 1`
+        label: `Season 1`,
+        description: `Season Tooltip`
       }
     ]
   },
@@ -67,22 +71,26 @@ const episodes = [
       {
         group: `Planet`,
         value: `squanch`,
-        label: `Squanch`
+        label: `Squanch`,
+        description: `Planet Tooltip`
       },
       {
         group: `Guest character`,
         value: `birdperson`,
-        label: `Birdperson`
+        label: `Birdperson`,
+        description: `Guest character Tooltip`
       },
       {
         group: `Guest character`,
         value: `squanchy`,
-        label: `Squanchy`
+        label: `Squanchy`,
+        description: `Guest character Tooltip`
       },
       {
         group: `Season`,
         value: `2`,
-        label: `Season 2`
+        label: `Season 2`,
+        description: `Season Tooltip`
       }
     ]
   },
@@ -94,17 +102,20 @@ const episodes = [
       {
         group: `Guest character`,
         value: `birdperson`,
-        label: `Birdperson`
+        label: `Birdperson`,
+        description: `Guest character Tooltip`
       },
       {
         group: `Planet`,
         value: `buttworld`,
-        label: `Buttworld`
+        label: `Buttworld`,
+        description: `Planet Tooltip`
       },
       {
         group: `Season`,
         value: `3`,
-        label: `Season 3`
+        label: `Season 3`,
+        description: `Season Tooltip`
       }
     ]
   },
@@ -116,17 +127,20 @@ const episodes = [
       {
         group: `Guest character`,
         value: `squanchy`,
-        label: `Squanchy`
+        label: `Squanchy`,
+        description: `Guest character Tooltip`
       },
       {
         group: `Guest character`,
         value: `abradolf_lincler`,
-        label: `Abradolf Lincler`
+        label: `Abradolf Lincler`,
+        description: `Guest character Tooltip`
       },
       {
         group: `Season`,
         value: `1`,
-        label: `Season 1`
+        label: `Season 1`,
+        description: `Season Tooltip`
       }
     ]
   },
@@ -138,22 +152,26 @@ const episodes = [
       {
         group: `Guest character`,
         value: `ricktiminus_sancheziminius`,
-        label: `Ricktiminus Sancheziminius`
+        label: `Ricktiminus Sancheziminius`,
+        description: `Guest character Tooltip`
       },
       {
         group: `Guest character`,
         value: `abradolf_lincler`,
-        label: `Abradolf Lincler`
+        label: `Abradolf Lincler`,
+        description: `Guest character Tooltip`
       },
       {
         group: `Planet`,
         value: `buttworld`,
-        label: `Buttworld`
+        label: `Buttworld`,
+        description: `Planet Tooltip`
       },
       {
         group: `Season`,
         value: `1`,
-        label: `Season 1`
+        label: `Season 1`,
+        description: `Season Tooltip`
       }
     ]
   }

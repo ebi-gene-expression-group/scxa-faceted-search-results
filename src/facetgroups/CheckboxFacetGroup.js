@@ -39,9 +39,12 @@ class CheckboxFacetGroup extends React.Component {
 
     return (
       <div className={`padding-bottom-xlarge`}>
-        <h4>{facetGroupName}<span>
+        <h4>{facetGroupName}
+        {facetGroupNameDescription != null &&
+          <span>
     <sup data-tooltip aria-haspopup="true" className="has-tip tip-right" style={tooltipStyle} title={facetGroupNameDescription}>?</sup>
-    </span></h4>
+    </span>
+  }</h4>
         {facets.map((facet) =>
           <CheckboxOption {...facet}
                           checked={checkedFacets.some((checkedFacet) => checkedFacet.value === facet.value)}
