@@ -1,0 +1,195 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FilterSidebarCheckboxDropdownFacetGroup matches snapshot 1`] = `
+<div
+  className="padding-bottom-xlarge"
+>
+  <h4>
+    Planet
+    <span>
+      <sup
+        aria-haspopup="true"
+        className="has-tip tip-right"
+        data-tooltip={true}
+        style={
+          Object {
+            "background": "white",
+            "border": "none",
+          }
+        }
+        title="Planet tooltip"
+      >
+        ?
+      </sup>
+    </span>
+  </h4>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="gazorpazorp"
+    />
+    <label
+      style={Object {}}
+    >
+      Gazorpazorp
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="gwendolyn"
+    />
+    <label
+      style={Object {}}
+    >
+      Gwendolyn
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="ma-sha"
+    />
+    <label
+      style={Object {}}
+    >
+      Ma-Sha
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="1"
+    />
+    <label
+      style={Object {}}
+    >
+      Season 1
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="squanch"
+    />
+    <label
+      style={Object {}}
+    >
+      Squanch
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="birdperson"
+    />
+    <label
+      style={Object {}}
+    >
+      Birdperson
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="squanchy"
+    />
+    <label
+      style={Object {}}
+    >
+      Squanchy
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="2"
+    />
+    <label
+      style={Object {}}
+    >
+      Season 2
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="buttworld"
+    />
+    <label
+      style={Object {}}
+    >
+      Buttworld
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="3"
+    />
+    <label
+      style={Object {}}
+    >
+      Season 3
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="abradolf_lincler"
+    />
+    <label
+      style={Object {}}
+    >
+      Abradolf Lincler
+    </label>
+  </div>
+  <div>
+    <input
+      checked={false}
+      disabled={false}
+      onChange={[Function]}
+      type="checkbox"
+      value="ricktiminus_sancheziminius"
+    />
+    <label
+      style={Object {}}
+    >
+      Ricktiminus Sancheziminius
+    </label>
+  </div>
+</div>
+`;

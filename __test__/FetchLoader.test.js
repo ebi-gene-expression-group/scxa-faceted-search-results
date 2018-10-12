@@ -35,7 +35,7 @@ describe(`FetchLoader`, () => {
     await wrapper.instance().componentDidMount()
     wrapper.update()
     expect(wrapper.find(`#loader`)).toHaveLength(0)
-    expect(wrapper.find(`.callout .alert`)).toHaveLength(0)
+    expect(wrapper.find(`.callout.alert`)).toHaveLength(0)
   })
 
   test(`renders an error message if request to the server returns 4xx or 5xx`, async () => {
@@ -44,7 +44,7 @@ describe(`FetchLoader`, () => {
 
     await wrapper.instance().componentDidMount()
     wrapper.update()
-    expect(wrapper.find(`.callout .alert`)).toHaveLength(1)
+    expect(wrapper.find(`.callout.alert`)).toHaveLength(1)
   })
 
   test(`renders an error message if the component does not receive JSON`, async () => {
@@ -53,7 +53,7 @@ describe(`FetchLoader`, () => {
 
     await wrapper.instance().componentDidMount()
     wrapper.update()
-    expect(wrapper.find(`.callout .alert`)).toHaveLength(1)
+    expect(wrapper.find(`.callout.alert`)).toHaveLength(1)
   })
 
   test(`renders an error message if the child receives invalid JSON (and the error boundary kicks in)`, async () => {
@@ -63,7 +63,7 @@ describe(`FetchLoader`, () => {
     const e = new Error(`They’re inside you building a monument to compromise!`)
     wrapper.instance().componentDidCatch(e, `Ruben’s seen some rough years, Morty.`)
     wrapper.update()
-    expect(wrapper.find(`.callout .alert`)).toHaveLength(1)
+    expect(wrapper.find(`.callout.alert`)).toHaveLength(1)
   })
 
 })

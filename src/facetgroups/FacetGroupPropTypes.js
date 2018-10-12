@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-import {FacetPropTypes,FacetTooltipPropTypes} from '../ResultPropTypes'
+import {FacetPropTypes} from '../ResultPropTypes'
 //import {FacetTooltipPropTypes} from '../ResultPropTypes'
 
 const FacetGroupPropTypes = {
@@ -8,8 +8,7 @@ const FacetGroupPropTypes = {
   facets: PropTypes.arrayOf(PropTypes.shape({
     ...FacetPropTypes,
     disabled: PropTypes.bool.isRequired})).isRequired,
-  facetGroupNameDescription: PropTypes.string,
-  facetTooltips: PropTypes.arrayOf(PropTypes.shape({...FacetTooltipPropTypes})),
+  //facetGroupNameDescription: PropTypes.string,
   onChange: PropTypes.func.isRequired
 }
 

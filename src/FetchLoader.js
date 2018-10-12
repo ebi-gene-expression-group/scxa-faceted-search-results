@@ -75,7 +75,6 @@ class FetchLoader extends React.Component {
     // be true when the promise is handled. Strictly speaking, the right thing to do would be to call _fetch in a
     // callback passed as the second argument to setState, but if we wanted to also return the promise to test the
     // component we’d need to declare a variable outside, set it within the callback, and return it... not pretty!
-
     return _fetch(host, resource).then(
       (responseJson) =>
         this.setState({
@@ -85,7 +84,7 @@ class FetchLoader extends React.Component {
         })
       )
       .catch(
-        (error) =>
+        (error) => 
           this.setState({
             data: null,
             loading: false,
