@@ -35,7 +35,8 @@ describe(`FilterSidebarCheckboxDropdownFacetGroup`, () => {
           {
             group: `Guest character`,
             value: `birdperson`,
-            label: `Birdperson`
+            label: `Birdperson`,
+            description:``,
           }],
     checkboxFacetGroups: [`Season`],
     facetGroupName: `Planet`,
@@ -53,7 +54,7 @@ describe(`FilterSidebarCheckboxDropdownFacetGroup`, () => {
 
   test(`checks tooltip does not exist when no tooltip text in payload`, () => {
     const wrapper = mount(<CheckboxFacetGroup facetGroupName= {noTooltipProps.facetGroupName}
-                                                            facetGroupNameDescription={null}
+                                                            facetGroupNameDescription={""}
                                                             facets={noTooltipProps.facets}
                                                             onChange={noTooltipProps.onChange}
                                                             key={noTooltipProps.facetGroupName} />)

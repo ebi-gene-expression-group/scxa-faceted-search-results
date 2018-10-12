@@ -58,7 +58,7 @@ const tooltipStyle = {
 const MultiselectDropdownFacetGroup = ({facetGroupName, facetGroupNameDescription, facets, onChange}) =>
   <div className={`padding-bottom-xlarge`}>
     <h4>{facetGroupName}
-{facetGroupNameDescription != null &&
+{facetGroupNameDescription != "" &&
     <span>
     <sup data-tooltip aria-haspopup="true" className="has-tip tip-right" style={tooltipStyle} title={facetGroupNameDescription}>?</sup>
     </span>

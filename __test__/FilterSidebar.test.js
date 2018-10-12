@@ -33,7 +33,8 @@ describe(`FilterSidebar`, () => {
           {
             group: `Guest character`,
             value: `birdperson`,
-            label: `Birdperson`
+            label: `Birdperson`,
+            description: ``
           }],
     checkboxFacetGroups: [`Season`],
     onChange: () => {}
