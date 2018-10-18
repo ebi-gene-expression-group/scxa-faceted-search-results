@@ -40,7 +40,7 @@ class CheckboxFacetGroup extends React.Component {
     return (
       <div className={`padding-bottom-xlarge`}>
         <h4>{facetGroupName}
-        {facetGroupNameDescription != "" &&
+        {facetGroupNameDescription != null &&
           <span>
     <sup data-tooltip aria-haspopup="true" className="has-tip tip-right" style={tooltipStyle} title={facetGroupNameDescription}>?</sup>
     </span>

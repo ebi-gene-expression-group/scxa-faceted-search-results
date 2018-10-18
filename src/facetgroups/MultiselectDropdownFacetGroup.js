@@ -51,19 +51,20 @@ const ebiVfSelectStyles = {
 }
 
 const tooltipStyle = {
-    background: 'white',
-    border: 'none'
+    background: `white`,
+    border: `none`
 }
 
 const MultiselectDropdownFacetGroup = ({facetGroupName, facetGroupNameDescription, facets, onChange}) =>
   <div className={`padding-bottom-xlarge`}>
     <h4>{facetGroupName}
-{facetGroupNameDescription != "" &&
-    <span>
-    <sup data-tooltip aria-haspopup="true" className="has-tip tip-right" style={tooltipStyle} title={facetGroupNameDescription}>?</sup>
-    </span>
-  }</h4>
-    <Select components={{ DropdownIndicator, IndicatorSeparator: null }}
+    {facetGroupNameDescription != null &&
+      <span>
+        <sup data-tooltip aria-haspopup="true" className="has-tip tip-right" style={tooltipStyle} title={facetGroupNameDescription}>?</sup>
+      </span>
+    }</h4>
+    <Select inputId={`facetGroupMultiSelectDropdown`}
+            components={{ DropdownIndicator, IndicatorSeparator: null }}
             styles={ebiVfSelectStyles}
             closeMenuOnSelect={false}
             isMulti={true}
