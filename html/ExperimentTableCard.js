@@ -10,12 +10,11 @@ class ExperimentTableCard extends React.Component {
   }
 
   render() {
-    const {experimentAccession, url, species, experimentDescription, longDescription, lastUpdated, markerGenes, specificExperimentInfo} = this.props
+    const {url, species, experimentDescription, markerGenes, specificExperimentInfo} = this.props
 
     const markerGeneLinks = markerGenes && markerGenes.map((markerGene) => {
       return <li><a href={markerGene.url}>See cluster {markerGene.clusterIds.sort().join(', ')} for k = {markerGene.k}</a></li>
     })
-    //            <span style={{fontSize: "80px"}} data-tooltip title={`See ${markerGeneLinks}`}>&#10004;</span>
 
     return (
       <div>
@@ -45,25 +44,25 @@ class ExperimentTableCard extends React.Component {
         </ul>
 
         <p id="number"> {specificExperimentInfo[0].numberOfAssays} </p>
-      </a>
+       </a>
       </div>
     )
   }
 }
 
 ExperimentTableCard.propTypes = {
-  experimentAccession: PropTypes.string.isRequired,
-  lastUpdated: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired,
   species: PropTypes.string.isRequired,
   experimentDescription: PropTypes.string.isRequired,
-  longDescription: PropTypes.string,
-  type: PropTypes.string.isRequired,
   markerGenes: PropTypes.arrayOf(PropTypes.shape({
     k: PropTypes.number.isRequired,
     clusterIds: PropTypes.array.isRequired,
     url: PropTypes.string.isRequired
-  }))
+  })),
+  specificExperimentInfo: PropTypes.arrayOf(PropTypes.shape({
+    numberOfAssays: PropTypes.number.isRequired,
+    experimentalFactors: PropTypes.array.isRequired
+  })),
 }
 
 export default ExperimentTableCard

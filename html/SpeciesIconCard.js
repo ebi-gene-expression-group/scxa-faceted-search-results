@@ -12,18 +12,13 @@ const SpeciesIconCard = ({iconSrc, description}) => {
       {
         description && <h5 className="species-name">{description}</h5>
       }
-
     </div>
   )
 }
 
 SpeciesIconCard.propTypes = {
   iconSrc: PropTypes.string.isRequired,
-  description: PropTypes.string,
-  content: PropTypes.arrayOf(PropTypes.shape({
-    text: PropTypes.string.isRequired,
-    url: PropTypes.string
-  }))
+  description: PropTypes.string
 }
 
 export default SpeciesIconCard
