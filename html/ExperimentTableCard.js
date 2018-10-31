@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import SpeciesIconCard from './SpeciesIconCard'
 import './ExperimentTableCard.css'
 
@@ -19,6 +18,7 @@ class ExperimentTableCard extends React.Component {
     return (
       <div>
        <a href={url} id="container">
+       
         <span id="icon" className={"label"}>
           <SpeciesIconCard iconSrc={species} description={species}/>
         </span>
@@ -35,15 +35,14 @@ class ExperimentTableCard extends React.Component {
           </div>
         }
 
-        <p id="title">
-         {experimentDescription}
-        </p>
+        <p id="title"> {experimentDescription} </p>
 
         <ul id="var">
           {specificExperimentInfo[0].experimentalFactors.map(factor => <li> {factor} </li>)}
         </ul>
 
         <p id="number"> {specificExperimentInfo[0].numberOfAssays} </p>
+
        </a>
       </div>
     )
