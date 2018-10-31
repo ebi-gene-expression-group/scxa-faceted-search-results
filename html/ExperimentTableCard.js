@@ -32,19 +32,19 @@ class ExperimentTableCard extends React.Component {
             </ul>
           </div> :
           <div id="marker">
-            <span data-tooltip title="No expressed marker genes"style={{fontSize: "80px"}}>&#10006;</span>
+            <span data-tooltip title="No expressed marker genes">&#10006;</span>
           </div>
         }
 
-        <h5 id="title">
+        <p id="title">
          {experimentDescription}
-        </h5>
+        </p>
 
         <ul id="var">
           {specificExperimentInfo[0].experimentalFactors.map(factor => <li> {factor} </li>)}
         </ul>
 
-        <p id="number" style={{fontSize: "40px"}}> {specificExperimentInfo[0].numberOfAssays} </p>
+        <p id="number"> {specificExperimentInfo[0].numberOfAssays} </p>
       </a>
       </div>
     )

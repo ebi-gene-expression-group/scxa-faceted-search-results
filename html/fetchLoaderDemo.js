@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 
 import FetchLoader from '../src/FetchLoader'
 
-import ExperimentCard from './ExperimentCard'
 import ExperimentTableCard from './ExperimentTableCard'
 
 const render = (options, target) => {
