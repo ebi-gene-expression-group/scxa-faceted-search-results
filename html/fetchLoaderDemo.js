@@ -4,10 +4,11 @@ import ReactDOM from 'react-dom'
 import FetchLoader from '../src/FetchLoader'
 
 import ExperimentCard from './ExperimentCard'
+import ExperimentTableCard from './ExperimentTableCard'
 
 const render = (options, target) => {
   ReactDOM.render(<FetchLoader {...options}
-                               ResultElementClass={ExperimentCard}/>, document.getElementById(target))
+                               ResultElementClass={ExperimentTableCard}/>, document.getElementById(target))
 }
 
 export {render}
