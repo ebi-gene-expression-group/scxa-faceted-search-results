@@ -58,9 +58,9 @@ const tooltipStyle = {
 const MultiselectDropdownFacetGroup = ({facetGroupName, facetGroupNameDescription, facets, onChange}) =>
   <div className={`padding-bottom-xlarge`}>
     <h4>{facetGroupName}
-    {facetGroupNameDescription != null &&
+    {facetGroupNameDescription &&
       <span>
-        <sup data-tooltip aria-haspopup="true" className="has-tip tip-right" style={tooltipStyle} title={facetGroupNameDescription}>?</sup>
+        <sup data-tooltip aria-haspopup="true" className={`has-tip tip-right`} style={tooltipStyle} title={facetGroupNameDescription}>?</sup>
       </span>
     }</h4>
     <Select inputId={`facetGroupMultiSelectDropdown`}
@@ -69,7 +69,6 @@ const MultiselectDropdownFacetGroup = ({facetGroupName, facetGroupNameDescriptio
             closeMenuOnSelect={false}
             isMulti={true}
             onChange={(args) => onChange(facetGroupName, args)}
-            // isOptionDisabled={(option) => option.disabled}
             options={facets.filter((facet) => !facet.disabled)}/>
   </div>
 

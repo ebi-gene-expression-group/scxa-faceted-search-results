@@ -3,17 +3,14 @@ import renderer from 'react-test-renderer'
 import Enzyme from 'enzyme'
 import {mount} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import _ from 'lodash'
 
 import {getRandomInt, episodes} from './TestUtils'
 
-import FilterSidebar from '../src/FilterSidebar'
-import CheckboxFacetGroup from '../src/facetgroups/CheckboxFacetGroup'
 import MultiselectDropdownFacetGroup from '../src/facetgroups/MultiselectDropdownFacetGroup'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe(`FilterSidebarMultiselectDropdownFacetGroup`, () => {
+describe(`MultiselectDropdownFacetGroup`, () => {
   const allFacets = episodes.reduce((acc, episode) => acc.concat(episode.facets), [])
   const uniqueFacets =
     allFacets
@@ -44,11 +41,16 @@ describe(`FilterSidebarMultiselectDropdownFacetGroup`, () => {
   }
 
   test(`checks wether tooltip exists`, () => {
-    const wrapper = mount(<MultiselectDropdownFacetGroup facetGroupName= {props.facetGroupName}
-                                                            facetGroupNameDescription={props.facetGroupNameDescription}
+    const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
+    const descriptions = [...new Set(uniqueFacets.map((facet) => facet.description))]
+    const randomMultiselectFacetGroup = groups[getRandomInt(0, groups.length)]
+    const randomMultiselectFacetGroupDescription = descriptions[getRandomInt(0, descriptions.length)]
+
+    const wrapper = mount(<MultiselectDropdownFacetGroup facetGroupName= {randomMultiselectFacetGroup}
+                                                            facetGroupNameDescription={randomMultiselectFacetGroupDescription}
                                                             facets={props.facets}
                                                             onChange={props.onChange}
-                                                            key={props.facetGroupName} />)
+                                                            key={randomMultiselectFacetGroup} />)
     expect(wrapper.find(`sup`).first().html()).toEqual(expect.stringMatching(`data-tooltip`))
   })
 

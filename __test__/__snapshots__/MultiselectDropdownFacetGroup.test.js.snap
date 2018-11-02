@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FilterSidebarMultiselectDropdownFacetGroup matches snapshot 1`] = `
+exports[`MultiselectDropdownFacetGroup matches snapshot 1`] = `
 <div
   className="padding-bottom-xlarge"
 >
