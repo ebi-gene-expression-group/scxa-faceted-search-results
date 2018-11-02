@@ -3,16 +3,14 @@ import renderer from 'react-test-renderer'
 import Enzyme from 'enzyme'
 import {mount} from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
-import _ from 'lodash'
 
 import {getRandomInt, episodes} from './TestUtils'
 
-import FilterSidebar from '../src/FilterSidebar'
 import CheckboxFacetGroup from '../src/facetgroups/CheckboxFacetGroup'
 
 Enzyme.configure({ adapter: new Adapter() })
 
-describe(`FilterSidebarCheckboxDropdownFacetGroup`, () => {
+describe(`CheckboxFacetGroup`, () => {
   const allFacets = episodes.reduce((acc, episode) => acc.concat(episode.facets), [])
   const uniqueFacets =
     allFacets
@@ -43,11 +41,16 @@ describe(`FilterSidebarCheckboxDropdownFacetGroup`, () => {
   }
 
   test(`checks wether tooltip exists`, () => {
-    const wrapper = mount(<CheckboxFacetGroup facetGroupName= {props.facetGroupName}
-                                                            facetGroupNameDescription={props.facetGroupNameDescription}
+    const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
+    const descriptions = [...new Set(uniqueFacets.map((facet) => facet.description))]
+    const randomCheckboxFacetGroup = groups[getRandomInt(0, groups.length)]
+    const randomCheckboxFacetGroupDescription = descriptions[getRandomInt(0, descriptions.length)]
+
+    const wrapper = mount(<CheckboxFacetGroup facetGroupName= {randomCheckboxFacetGroup}
+                                                            facetGroupNameDescription={randomCheckboxFacetGroupDescription}
                                                             facets={props.facets}
                                                             onChange={props.onChange}
-                                                            key={props.facetGroupName} />)
+                                                            key={randomCheckboxFacetGroup} />)
     expect(wrapper.find(`sup`).first().html()).toEqual(expect.stringMatching(`data-tooltip`))
   })
 

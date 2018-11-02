@@ -4,15 +4,15 @@ import { xorBy as _xorBy } from 'lodash'
 import FacetGroupPropTypes from './FacetGroupPropTypes'
 
 const CheckboxOption = ({group, value, label, disabled, checked, onChange}) =>
-  <div>
-    <input type={`checkbox`} {...{value, checked, disabled}}
-           onChange={() => onChange({group, label, value, disabled})}/>
-    <label style={disabled ? {color: `lightgrey`} : {}}>{label}</label>
-  </div>
+<div>
+  <input type={`checkbox`} {...{value, checked, disabled}}
+         onChange={() => onChange({group, label, value, disabled})}/>
+  <label style={disabled ? {color: `lightgrey`} : {}}>{label}</label>
+</div>
 
 const tooltipStyle = {
-    background: 'white',
-    border: 'none'
+  background: `white`,
+  border: `none`
 }
 // In principle we don’t need this component to be stateful, but in doing so we can create a custom _handleChange
 // function that will ultimately call onChange(facetGroupName, facets); this allows us to have the same API as
@@ -40,19 +40,19 @@ class CheckboxFacetGroup extends React.Component {
     return (
       <div className={`padding-bottom-xlarge`}>
         <h4>{facetGroupName}
-        {facetGroupNameDescription != null &&
+          {facetGroupNameDescription &&
           <span>
-    <sup data-tooltip aria-haspopup="true" className="has-tip tip-right" style={tooltipStyle} title={facetGroupNameDescription}>?</sup>
-    </span>
-  }</h4>
-        {facets.map((facet) =>
-          <CheckboxOption {...facet}
-                          checked={checkedFacets.some((checkedFacet) => checkedFacet.value === facet.value)}
-                          onChange={this._handleChange}
-                          key={facet.value}/>
+            <sup data-tooltip aria-haspopup="true" className={`has-tip tip-right`} style={tooltipStyle} title={facetGroupNameDescription}>?</sup>
+          </span>}
+        </h4>
+      {facets.map((facet) =>
+        <CheckboxOption {...facet}
+                        checked={checkedFacets.some((checkedFacet) => checkedFacet.value === facet.value)}
+                        onChange={this._handleChange}
+                        key={facet.value}/>
         )}
       </div>
-    )
+      )
   }
 }
 
