@@ -47,7 +47,7 @@ describe(`FilterSidebar`, () => {
     expect(wrapper.find(`h4`).last().text()).not.toEqual(expect.stringMatching(randomCheckboxFacetGroup))
   })
 
-  test(`checks wether tooltip exists`, () => {
+  test(`checks whether tooltip exists`, () => {
     const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
     const randomCheckboxFacetGroup = groups[getRandomInt(0, groups.length)]
     const wrapper = mount(<FilterSidebar {...props} checkboxFacetGroups={[randomCheckboxFacetGroup]} />)
