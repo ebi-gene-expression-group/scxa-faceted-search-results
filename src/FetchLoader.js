@@ -5,16 +5,6 @@ import URI from 'urijs'
 import CalloutAlert from './CalloutAlert'
 import FacetedSearchContainer from './FacetedSearchContainer'
 
-const _fetch = async (host, resource) => {
-  const url = URI(resource, host).toString()
-  const response = await fetch(url)
-  // The promise returned by fetch may be fulfilled with a 4xx or 5xx return code...
-  if (response.ok) {
-    return await response.json()
-  }
-  throw new Error(`${url} => ${response.status}`)
-}
-
 class FetchLoader extends React.Component {
   constructor(props) {
     super(props)
@@ -24,6 +14,23 @@ class FetchLoader extends React.Component {
       loading: true,
       error: null
     }
+  }
+
+  static getDerivedStateFromProps(props, state) {
+    const url = URI(props.resource, props.host).toString()
+    // Store url in state so we can compare when props change.
+    // Clear out previously-loaded data (so we don't render stale stuff).
+    if (url !== state.url) {
+      return {
+        data: null,
+        loading: true,
+        error: null,
+        url: url
+      }
+    }
+
+    // No state update necessary
+    return null
   }
 
   render() {
@@ -38,9 +45,10 @@ class FetchLoader extends React.Component {
           <p>Loading, please wait...</p>
         </div> :
         data.results && data.results.length > 0 ?
-          <FacetedSearchContainer {...data}
-                                  ResultElementClass={ResultElementClass}
-                                  resultsMessage={resultsMessage}/> :
+          <FacetedSearchContainer
+            {...data}
+            ResultElementClass={ResultElementClass}
+            resultsMessage={resultsMessage}/> :
           <div className={`row column`}>
             <p>{noResultsMessage}</p>
             { data.reason && <p>{data.reason}</p> }
@@ -48,39 +56,40 @@ class FetchLoader extends React.Component {
     )
   }
 
-  _fetchAndSetState(host, resource) {
-    this.setState({ loading: true })
-
-    // then and catch methods are run “at the end of the current run of the JavaScript event loop” according to section
-    // ‘Timing’ in https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Using_promises, so state.loading will
-    // be true when the promise is handled. Strictly speaking, the right thing to do would be to call _fetch in a
-    // callback passed as the second argument to setState, but if we wanted to also return the promise to test the
-    // component we’d need to declare a variable outside, set it within the callback, and return it... not pretty!
-
-    return _fetch(host, resource).then(
-      (responseJson) =>
-        this.setState({
-          data: responseJson,
-          loading: false,
-          error: null
-        })
-      )
-      .catch(
-        (error) =>
-          this.setState({
-            data: null,
-            loading: false,
-            error: {
-              description: `There was a problem processing your request. Please try again later.`,
-              name: error.name,
-              message: error.message
-            }
-          })
-      )
+  async componentDidUpdate(prevProps, prevState) {
+    if (this.state.data === null && this.state.error === null) {
+      await this._loadAsyncData(URI(this.props.resource, this.props.host).toString())
+    }
   }
 
-  componentDidMount() {
-    return this._fetchAndSetState(this.props.host, this.props.resource)
+  async componentDidMount() {
+    await this._loadAsyncData(URI(this.props.resource, this.props.host).toString())
+  }
+
+  async _loadAsyncData(url) {
+    try {
+      const response = await fetch(url)
+      // The promise returned by fetch may be fulfilled with a 4xx or 5xx return code, so we need to explicitly check ok
+      if (!response.ok) {
+        throw new Error(`${url} => ${response.status}`)
+      }
+
+      this.setState({
+        data: await response.json(),
+        loading: false,
+        error: null
+      })
+    } catch (e) {
+      this.setState({
+        data: null,
+        loading: false,
+        error: {
+          description: `There was a problem communicating with the server. Please try again later.`,
+          name: e.name,
+          message: e.message
+        }
+      })
+    }
   }
 
   componentDidCatch(error, info) {
