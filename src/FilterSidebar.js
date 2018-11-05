@@ -6,7 +6,7 @@ import FacetGroupPropTypes from './facetgroups/FacetGroupPropTypes'
 import CheckboxFacetGroup from './facetgroups/CheckboxFacetGroup'
 import MultiselectDropdownFacetGroup from './facetgroups/MultiselectDropdownFacetGroup'
 
-import {FacetPropTypes,FacetTooltipPropTypes} from './ResultPropTypes'
+import {FacetPropTypes, FacetTooltipPropTypes} from './ResultPropTypes'
 
 const FilterSidebar = ({facets, checkboxFacetGroups, onChange}) => {
   const facetGroups =

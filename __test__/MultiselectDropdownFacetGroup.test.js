@@ -40,7 +40,7 @@ describe(`MultiselectDropdownFacetGroup`, () => {
     onChange: () => {}
   }
 
-  test(`checks wether tooltip exists`, () => {
+  test(`checks whether tooltip exists`, () => {
     const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
     const descriptions = [...new Set(uniqueFacets.map((facet) => facet.description))]
     const randomMultiselectFacetGroup = groups[getRandomInt(0, groups.length)]
