@@ -4,7 +4,6 @@ import { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import fetchMock from 'fetch-mock'
 
-import randomWords from 'random-words'
 import { getRandomInt } from './TestUtils'
 
 import FetchLoader from '../src/FetchLoader'
