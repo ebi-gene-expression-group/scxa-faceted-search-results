@@ -41,25 +41,25 @@ const episodes = [
         group: `Planet`,
         value: `gazorpazorp`,
         label: `Gazorpazorp`,
-        description: `Planet Tooltip`
+        description: `Planets where events in this episode take place`
       },
       {
         group: `Guest character`,
         value: `gwendolyn`,
         label: `Gwendolyn`,
-        description: `Guest character Tooltip`
+        description: `Guest characters that tag along for the adventures in this episodes`
       },
       {
         group: `Guest character`,
         value: `ma-sha`,
         label: `Ma-Sha`,
-        description: `Guest character Tooltip`
+        description: `Guest characters that tag along for the adventures in this episodes`
       },
       {
         group: `Season`,
         value: `1`,
         label: `Season 1`,
-        description: `Season Tooltip`
+        description: `Season no.`
       }
     ]
   },
@@ -72,25 +72,25 @@ const episodes = [
         group: `Planet`,
         value: `squanch`,
         label: `Squanch`,
-        description: `Planet Tooltip`
+        description: `Planets where events in this episode take place`
       },
       {
         group: `Guest character`,
         value: `birdperson`,
         label: `Birdperson`,
-        description: `Guest character Tooltip`
+        description: `Guest characters that tag along for the adventures in this episodes`
       },
       {
         group: `Guest character`,
         value: `squanchy`,
         label: `Squanchy`,
-        description: `Guest character Tooltip`
+        description: `Guest characters that tag along for the adventures in this episodes`
       },
       {
         group: `Season`,
         value: `2`,
         label: `Season 2`,
-        description: `Season Tooltip`
+        description: `Season no.`
       }
     ]
   },
@@ -103,19 +103,19 @@ const episodes = [
         group: `Guest character`,
         value: `birdperson`,
         label: `Birdperson`,
-        description: `Guest character Tooltip`
+        description: `Guest characters that tag along for the adventures in this episodes`
       },
       {
         group: `Planet`,
         value: `buttworld`,
         label: `Buttworld`,
-        description: `Planet Tooltip`
+        description: `Planets where events in this episode take place`
       },
       {
         group: `Season`,
         value: `3`,
         label: `Season 3`,
-        description: `Season Tooltip`
+        description: `Season no.`
       }
     ]
   },
@@ -128,19 +128,19 @@ const episodes = [
         group: `Guest character`,
         value: `squanchy`,
         label: `Squanchy`,
-        description: `Guest character Tooltip`
+        description: `Guest characters that tag along for the adventures in this episodes`
       },
       {
         group: `Guest character`,
         value: `abradolf_lincler`,
         label: `Abradolf Lincler`,
-        description: `Guest character Tooltip`
+        description: `Guest characters that tag along for the adventures in this episodes`
       },
       {
         group: `Season`,
         value: `1`,
         label: `Season 1`,
-        description: `Season Tooltip`
+        description: `Season no.`
       }
     ]
   },
@@ -153,25 +153,25 @@ const episodes = [
         group: `Guest character`,
         value: `ricktiminus_sancheziminius`,
         label: `Ricktiminus Sancheziminius`,
-        description: `Guest character Tooltip`
+        description: `Guest characters that tag along for the adventures in this episodes`
       },
       {
         group: `Guest character`,
         value: `abradolf_lincler`,
         label: `Abradolf Lincler`,
-        description: `Guest character Tooltip`
+        description: `Guest characters that tag along for the adventures in this episodes`
       },
       {
         group: `Planet`,
         value: `buttworld`,
         label: `Buttworld`,
-        description: `Planet Tooltip`
+        description: `Planets where events in this episode take place`
       },
       {
         group: `Season`,
         value: `1`,
         label: `Season 1`,
-        description: `Season Tooltip`
+        description: `Season no.`
       }
     ]
   }
