@@ -58,8 +58,7 @@ const episodes = [
       {
         group: `Season`,
         value: `1`,
-        label: `Season 1`,
-        description: `Season no.`
+        label: `Season 1`
       }
     ]
   },
@@ -89,8 +88,7 @@ const episodes = [
       {
         group: `Season`,
         value: `2`,
-        label: `Season 2`,
-        description: `Season no.`
+        label: `Season 2`
       }
     ]
   },
@@ -114,8 +112,7 @@ const episodes = [
       {
         group: `Season`,
         value: `3`,
-        label: `Season 3`,
-        description: `Season no.`
+        label: `Season 3`
       }
     ]
   },
@@ -139,8 +136,7 @@ const episodes = [
       {
         group: `Season`,
         value: `1`,
-        label: `Season 1`,
-        description: `Season no.`
+        label: `Season 1`
       }
     ]
   },
@@ -170,8 +166,7 @@ const episodes = [
       {
         group: `Season`,
         value: `1`,
-        label: `Season 1`,
-        description: `Season no.`
+        label: `Season 1`
       }
     ]
   }
