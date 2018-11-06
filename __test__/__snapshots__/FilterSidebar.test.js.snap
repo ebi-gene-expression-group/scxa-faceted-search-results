@@ -7,22 +7,6 @@ Array [
   >
     <h4>
       Season
-      <span>
-        <sup
-          aria-haspopup="true"
-          className="has-tip tip-right"
-          data-tooltip={true}
-          style={
-            Object {
-              "background": "white",
-              "border": "none",
-            }
-          }
-          title="Season Tooltip"
-        >
-          ?
-        </sup>
-      </span>
     </h4>
     <div>
       <input
@@ -83,7 +67,7 @@ Array [
               "border": "none",
             }
           }
-          title="Guest character Tooltip"
+          title="Guest characters that tag along for the adventures in this episodes"
         >
           ?
         </sup>
@@ -219,7 +203,7 @@ Array [
               "border": "none",
             }
           }
-          title="Planet Tooltip"
+          title="Planets where events in this episode take place"
         >
           ?
         </sup>

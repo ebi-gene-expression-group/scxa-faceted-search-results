@@ -17,7 +17,7 @@ exports[`CheckboxFacetGroup matches snapshot 1`] = `
             "border": "none",
           }
         }
-        title="Planet tooltip"
+        title="Planets where events in this episode take place"
       >
         ?
       </sup>
@@ -43,48 +43,6 @@ exports[`CheckboxFacetGroup matches snapshot 1`] = `
       disabled={false}
       onChange={[Function]}
       type="checkbox"
-      value="gwendolyn"
-    />
-    <label
-      style={Object {}}
-    >
-      Gwendolyn
-    </label>
-  </div>
-  <div>
-    <input
-      checked={false}
-      disabled={false}
-      onChange={[Function]}
-      type="checkbox"
-      value="ma-sha"
-    />
-    <label
-      style={Object {}}
-    >
-      Ma-Sha
-    </label>
-  </div>
-  <div>
-    <input
-      checked={false}
-      disabled={false}
-      onChange={[Function]}
-      type="checkbox"
-      value="1"
-    />
-    <label
-      style={Object {}}
-    >
-      Season 1
-    </label>
-  </div>
-  <div>
-    <input
-      checked={false}
-      disabled={false}
-      onChange={[Function]}
-      type="checkbox"
       value="squanch"
     />
     <label
@@ -99,96 +57,12 @@ exports[`CheckboxFacetGroup matches snapshot 1`] = `
       disabled={false}
       onChange={[Function]}
       type="checkbox"
-      value="birdperson"
-    />
-    <label
-      style={Object {}}
-    >
-      Birdperson
-    </label>
-  </div>
-  <div>
-    <input
-      checked={false}
-      disabled={false}
-      onChange={[Function]}
-      type="checkbox"
-      value="squanchy"
-    />
-    <label
-      style={Object {}}
-    >
-      Squanchy
-    </label>
-  </div>
-  <div>
-    <input
-      checked={false}
-      disabled={false}
-      onChange={[Function]}
-      type="checkbox"
-      value="2"
-    />
-    <label
-      style={Object {}}
-    >
-      Season 2
-    </label>
-  </div>
-  <div>
-    <input
-      checked={false}
-      disabled={false}
-      onChange={[Function]}
-      type="checkbox"
       value="buttworld"
     />
     <label
       style={Object {}}
     >
       Buttworld
-    </label>
-  </div>
-  <div>
-    <input
-      checked={false}
-      disabled={false}
-      onChange={[Function]}
-      type="checkbox"
-      value="3"
-    />
-    <label
-      style={Object {}}
-    >
-      Season 3
-    </label>
-  </div>
-  <div>
-    <input
-      checked={false}
-      disabled={false}
-      onChange={[Function]}
-      type="checkbox"
-      value="abradolf_lincler"
-    />
-    <label
-      style={Object {}}
-    >
-      Abradolf Lincler
-    </label>
-  </div>
-  <div>
-    <input
-      checked={false}
-      disabled={false}
-      onChange={[Function]}
-      type="checkbox"
-      value="ricktiminus_sancheziminius"
-    />
-    <label
-      style={Object {}}
-    >
-      Ricktiminus Sancheziminius
     </label>
   </div>
 </div>

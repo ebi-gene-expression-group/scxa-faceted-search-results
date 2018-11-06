@@ -17,7 +17,7 @@ exports[`MultiselectDropdownFacetGroup matches snapshot 1`] = `
             "border": "none",
           }
         }
-        title="Planet tooltip"
+        title="Planets where events in this episode take place"
       >
         ?
       </sup>
