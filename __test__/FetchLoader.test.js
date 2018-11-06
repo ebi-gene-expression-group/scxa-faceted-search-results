@@ -4,10 +4,12 @@ import { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import fetchMock from 'fetch-mock'
 
+import randomWords from 'random-words'
 import { getRandomInt } from './TestUtils'
 
 import FetchLoader from '../src/FetchLoader'
 import CalloutAlert from '../src/CalloutAlert'
+import FacetedSearchContainer from '../src/FacetedSearchContainer'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -85,5 +87,54 @@ describe(`FetchLoader`, () => {
     await wrapper.instance().componentDidUpdate()
     wrapper.update()
     expect(wrapper.find(CalloutAlert)).toHaveLength(0)
+  })
+
+  test(`passes JSON payload to prop resultsMessageFormatter`, async () => {
+    fetchMock.get(`*`, `{"results":[{"element": {"character": "Pickle Rick"}}], "searchPhrase": "best characters"}`)
+    const wrapper =
+      shallow(
+        <FetchLoader
+          {...props}
+          resultsMessageFormatter={(data) => `Results for ${data.searchPhrase}:`} />)
+
+    await wrapper.instance().componentDidMount()
+    wrapper.update()
+
+    expect(wrapper.find(FacetedSearchContainer).prop(`resultsMessage`)).toBe(`Results for best characters:`)
+  })
+
+  test(`passes JSON payload to prop noResultsMessageFormatter`, async () => {
+    fetchMock.get(`*`, `{"results":[], "reason": "Rubber baby bubby bunkers!"}`)
+    const wrapper =
+      shallow(
+        <FetchLoader
+          {...props}
+          noResultsMessageFormatter={(data) => `No results: ${data.reason}`} />)
+
+    await wrapper.instance().componentDidMount()
+    wrapper.update()
+
+    expect(wrapper.find(`p`).text()).toBe(`No results: Rubber baby bubby bunkers!`)
+  })
+
+  test(`results message by default is empty`, async () => {
+    fetchMock.get(`*`, `{"results":[{"element": {"character": "Pickle Rick"}}], "searchPhrase": "best characters"}`)
+    const wrapper = shallow(<FetchLoader {...props} />)
+
+    await wrapper.instance().componentDidMount()
+    wrapper.update()
+
+    expect(wrapper.find(FacetedSearchContainer).prop(`resultsMessage`)).toBe(``)
+  })
+
+  test(`no results message by default is empty`, async () => {
+    fetchMock.get(`*`, `{"results":[], "reason": "Rubber baby bubby bunkers!"}`)
+    const wrapper = shallow(<FetchLoader {...props} />)
+
+    await wrapper.instance().componentDidMount()
+    wrapper.update()
+
+    expect(wrapper.find(`p`).text()).toBe(``)
+
   })
 })
