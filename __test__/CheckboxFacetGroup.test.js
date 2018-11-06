@@ -3,6 +3,7 @@ import renderer from 'react-test-renderer'
 import Enzyme from 'enzyme'
 import { mount } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
+import _ from 'lodash'
 
 import { getRandomInt, episodes } from './TestUtils'
 
@@ -20,61 +21,47 @@ describe(`CheckboxFacetGroup`, () => {
         disabled: false
       }))
 
-  const props = {
-    facetGroupName: `Planet`,
-    facetGroupNameDescription: `Planets where the events of this episode take place`,
-    facets: uniqueFacets,
+  const facetTooltip = _.shuffle(uniqueFacets).find(facet => facet.description)
+  const facetWithoutTooltip = _.shuffle(uniqueFacets).find(facet => !facet.description)
+
+  const propsWithTooltip = {
+    facetGroupName: facetTooltip.group,
+    facetGroupNameDescription: facetTooltip.description,
+    facets: uniqueFacets.filter(facet => facet.group === facetTooltip.group),
     onChange: () => {}
   }
 
-  const noTooltipProps = {
-    facetGroupName: `Planet`,
-    facets: [{
-      group: `Guest character`,
-      value: `birdperson`,
-      label: `Birdperson`
-    }],
+  const propsWithoutTooltip = {
+    facetGroupName: facetWithoutTooltip.group,
+    facets: uniqueFacets.filter(facet => facet.group === facetWithoutTooltip.group),
     onChange: () => {}
   }
 
-  test(`checks whether tooltip exists`, () => {
+  test(`displays tooltip if it exists`, () => {
     const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
     const descriptions = [...new Set(uniqueFacets.map((facet) => facet.description))]
     const randomCheckboxFacetGroup = groups[getRandomInt(0, groups.length)]
     const randomCheckboxFacetGroupDescription = descriptions[getRandomInt(0, descriptions.length)]
 
-    const wrapper =
-      mount(
-        <CheckboxFacetGroup
-          facetGroupName= {randomCheckboxFacetGroup}
-          facetGroupNameDescription={randomCheckboxFacetGroupDescription}
-          facets={props.facets}
-          onChange={props.onChange}
-          key={randomCheckboxFacetGroup} />)
+    const wrapper = mount(<CheckboxFacetGroup {...propsWithTooltip} />)
     expect(wrapper.find(`sup`).first().html()).toEqual(expect.stringMatching(`data-tooltip`))
   })
 
-  test(`checks tooltip does not exist when no tooltip text in payload`, () => {
-    const wrapper =
-      mount(
-        <CheckboxFacetGroup
-          facetGroupName= {noTooltipProps.facetGroupName}
-          facetGroupNameDescription={null}
-          facets={noTooltipProps.facets}
-          onChange={noTooltipProps.onChange}
-          key={noTooltipProps.facetGroupName} />)
+  test(`doesn’t display tooltip if not present`, () => {
+    const wrapper = mount(<CheckboxFacetGroup {...propsWithoutTooltip} />)
     expect(wrapper.find(`sup`).exists()).toEqual(false)
   })
 
   test(`matches snapshot`, () => {
     const tree =
-      renderer.create(
-        <CheckboxFacetGroup
-          facetGroupName= {props.facetGroupName}
-          facetGroupNameDescription={props.facetGroupNameDescription}
-          facets={props.facets}
-          onChange={props.onChange}
-          key={props.facetGroupName} />).toJSON()
+      renderer
+        .create(
+          <CheckboxFacetGroup
+            facetGroupName = {uniqueFacets[0].group}
+            facetGroupNameDescription = {uniqueFacets[0].description}
+            facets = {uniqueFacets.filter(facet => facet.group === uniqueFacets[0].group)}
+            onChange = {() => {}} />)
+        .toJSON()
     expect(tree).toMatchSnapshot()
   })
 })
