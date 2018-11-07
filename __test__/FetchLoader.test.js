@@ -113,7 +113,7 @@ describe(`FetchLoader`, () => {
     await wrapper.instance().componentDidMount()
     wrapper.update()
 
-    expect(wrapper.find(`p`).text()).toBe(`No results: Rubber baby bubby bunkers!`)
+    expect(wrapper.find(`h5`).text()).toBe(`No results: Rubber baby bubby bunkers!`)
   })
 
   test(`results message by default is empty`, async () => {
@@ -133,7 +133,7 @@ describe(`FetchLoader`, () => {
     await wrapper.instance().componentDidMount()
     wrapper.update()
 
-    expect(wrapper.find(`p`).text()).toBe(``)
+    expect(wrapper.find(`h5`).text()).toBe(``)
 
   })
 })

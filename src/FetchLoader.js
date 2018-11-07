@@ -41,16 +41,20 @@ class FetchLoader extends React.Component {
       error ?
         <CalloutAlert error={error} /> :
       loading ?
-        <div id={`loader`} className={`row column`}>
-          <p>Loading, please wait...</p>
+        <div id={`loader`} className={`row expanded`}>
+          <div className={`small-12 columns`}>
+            <h5>Loading, please wait...</h5>
+          </div>
         </div> :
         data.results && data.results.length > 0 ?
           <FacetedSearchContainer
             {...data}
             ResultElementClass={ResultElementClass}
             resultsMessage={resultsMessageFormatter(data)}/> :
-          <div className={`row column`}>
-            <p>{noResultsMessageFormatter(data)}</p>
+          <div className={`row expanded`}>
+            <div className={`small-12 columns`}>
+              <h5>{noResultsMessageFormatter(data)}</h5>
+            </div>
           </div>
     )
   }
