@@ -34,24 +34,27 @@ class FetchLoader extends React.Component {
   }
 
   render() {
-    const {ResultElementClass, noResultsMessage, resultsMessage} = this.props
-    const {data, loading, error} = this.state
+    const { ResultElementClass, noResultsMessageFormatter, resultsMessageFormatter } = this.props
+    const { data, loading, error } = this.state
 
     return(
       error ?
         <CalloutAlert error={error} /> :
       loading ?
-        <div id={`loader`} className={`row column`}>
-          <p>Loading, please wait...</p>
+        <div id={`loader`} className={`row expanded`}>
+          <div className={`small-12 columns`}>
+            <h5>Loading, please wait...</h5>
+          </div>
         </div> :
         data.results && data.results.length > 0 ?
           <FacetedSearchContainer
             {...data}
             ResultElementClass={ResultElementClass}
-            resultsMessage={resultsMessage}/> :
-          <div className={`row column`}>
-            <p>{noResultsMessage}</p>
-            { data.reason && <p>{data.reason}</p> }
+            resultsMessage={resultsMessageFormatter(data)}/> :
+          <div className={`row expanded`}>
+            <div className={`small-12 columns`}>
+              <h5>{noResultsMessageFormatter(data)}</h5>
+            </div>
           </div>
     )
   }
@@ -107,8 +110,13 @@ FetchLoader.propTypes = {
   host: PropTypes.string.isRequired,
   resource: PropTypes.string.isRequired,
   ResultElementClass: PropTypes.func.isRequired,
-  noResultsMessage: PropTypes.string,
-  resultsMessage: PropTypes.string
+  noResultsMessageFormatter: PropTypes.func,
+  resultsMessageFormatter: PropTypes.func
+}
+
+FetchLoader.defaultProps = {
+  noResultsMessageFormatter: () => ``,
+  resultsMessageFormatter: () => ``
 }
 
 export default FetchLoader
