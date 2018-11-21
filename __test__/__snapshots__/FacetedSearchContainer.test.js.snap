@@ -65,11 +65,12 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
            
           <span
             className="icon icon-generic"
-            data-icon="?"
-            data-tip="Guest characters that tag along for the adventures in this episodes"
+            data-icon="i"
+            data-tip="Guest characters that tag along for the<br>adventures in this episodes"
             style={
               Object {
                 "color": "lightgrey",
+                "fontSize": "smaller",
               }
             }
           />
@@ -169,11 +170,12 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
            
           <span
             className="icon icon-generic"
-            data-icon="?"
-            data-tip="Planets where events in this episode take place"
+            data-icon="i"
+            data-tip="Planets where events in this episode take<br>place"
             style={
               Object {
                 "color": "lightgrey",
+                "fontSize": "smaller",
               }
             }
           />

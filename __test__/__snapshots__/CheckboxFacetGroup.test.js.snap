@@ -10,11 +10,12 @@ exports[`CheckboxFacetGroup matches snapshot 1`] = `
        
       <span
         className="icon icon-generic"
-        data-icon="?"
-        data-tip="Planets where events in this episode take place"
+        data-icon="i"
+        data-tip="Planets where events in this episode take<br>place"
         style={
           Object {
             "color": "lightgrey",
+            "fontSize": "smaller",
           }
         }
       />
