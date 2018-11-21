@@ -6,22 +6,14 @@ exports[`CheckboxFacetGroup matches snapshot 1`] = `
 >
   <h4>
     Planet
-    <span>
-      <sup
-        aria-haspopup="true"
-        className="has-tip tip-right"
-        data-tooltip={true}
-        style={
-          Object {
-            "background": "white",
-            "border": "none",
-          }
-        }
-        title="Planets where events in this episode take place"
-      >
-        ?
-      </sup>
-    </span>
+    <sup>
+       
+      <span
+        className="icon icon-generic"
+        data-icon="?"
+        data-tip="Planets where events in this episode take place"
+      />
+    </sup>
   </h4>
   <div>
     <input
