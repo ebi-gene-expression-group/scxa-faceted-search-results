@@ -39,7 +39,7 @@ class CheckboxFacetGroup extends React.Component {
           {facetGroupName}
           {
             facetGroupNameDescription &&
-            <sup> <span  data-tip={facetGroupNameDescription} className={`icon icon-generic`} data-icon={`?`}/></sup>
+            <sup> <span data-tip={facetGroupNameDescription} className={`icon icon-generic`} data-icon={`?`} style={{color:`lightgrey`}}/></sup>
           }
         </h4>
       {facets.map((facet) =>
