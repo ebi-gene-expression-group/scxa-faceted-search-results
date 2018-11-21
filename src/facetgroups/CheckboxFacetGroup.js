@@ -2,6 +2,7 @@ import React from 'react'
 import { xorBy as _xorBy } from 'lodash'
 
 import FacetGroupPropTypes from './FacetGroupPropTypes'
+import TooltipIcon from './TooltipIcon'
 
 const CheckboxOption = ({group, value, label, disabled, checked, onChange}) =>
 <div>
@@ -36,11 +37,8 @@ class CheckboxFacetGroup extends React.Component {
     return (
       <div className={`padding-bottom-xlarge`}>
         <h4>
-          {facetGroupName}
-          {
-            facetGroupNameDescription &&
-            <sup> <span data-tip={facetGroupNameDescription} className={`icon icon-generic`} data-icon={`?`} style={{color:`lightgrey`}}/></sup>
-          }
+          { facetGroupName }
+          { facetGroupNameDescription && <TooltipIcon tooltipText={facetGroupNameDescription}/> }
         </h4>
       {facets.map((facet) =>
         <CheckboxOption {...facet}
