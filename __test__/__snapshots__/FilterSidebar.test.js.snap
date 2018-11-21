@@ -60,8 +60,9 @@ Array [
          
         <span
           className="icon icon-generic"
+          data-html={true}
           data-icon="i"
-          data-tip="Guest characters that tag along for the<br>adventures in this episodes"
+          data-tip="<span>Guest characters that tag along for the<br>adventures in this episodes</span>"
           style={
             Object {
               "color": "lightgrey",
@@ -165,8 +166,9 @@ Array [
          
         <span
           className="icon icon-generic"
+          data-html={true}
           data-icon="i"
-          data-tip="Planets where events in this episode take<br>place"
+          data-tip="<span>Planets where events in this episode take<br>place</span>"
           style={
             Object {
               "color": "lightgrey",
