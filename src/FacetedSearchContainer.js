@@ -130,7 +130,7 @@ class FacetedSearchContainer extends React.Component {
           <FilterList {...{resultsMessage, ResultElementClass}}
                       filteredResults={this._filterResults(selectedFacets)}/>
         </div>
-        <ReactTooltip effect={`solid`}/>
+        <ReactTooltip effect={`solid`} multiline={`true`}/>
       </div>
     )
   }
