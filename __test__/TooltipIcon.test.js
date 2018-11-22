@@ -13,7 +13,8 @@ describe(`TooltipIcon`, () => {
   test(`breaks very long tooltip texts`, () => {
     const longText = randomWords(100).join(` `)
     const wrapper = shallow(<TooltipIcon tooltipText={longText} />)
-    expect(wrapper.find(`span`).prop(`data-tip`).split(`<br>`)).toHaveLength(Math.floor(longText.length / 40) - 1)
+    expect(wrapper.find(`span`).prop(`data-tip`).split(`<br>`).length)
+      .toBeGreaterThanOrEqual(Math.floor((longText.length / 40) - 1))
   })
 
   test(`matches snapshot`, () => {
