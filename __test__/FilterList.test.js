@@ -18,7 +18,7 @@ const props = {
 
 describe(`FilterList`, () => {
   test(`renders as many components of ResultElementClass as filtered results`, () => {
-    const randomFilteredResults=episodes.filter(() => Math.random() > 0.5)
+    const randomFilteredResults = episodes.filter(() => Math.random() > 0.5)
     const wrapper = shallow(<FilterList {...props} filteredResults={randomFilteredResults}/>)
     expect(wrapper.find(EpisodesHeader)).toHaveLength(1)
     expect(wrapper.find(EpisodeCard)).toHaveLength(randomFilteredResults.length)
