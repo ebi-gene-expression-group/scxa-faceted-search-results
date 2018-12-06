@@ -5,10 +5,35 @@ exports[`FilterList matches snapshot 1`] = `
   <h4>
     
   </h4>
-  <div>
-    <span>
-      Episode title
-    </span>
+  <div
+    className="sc-htpNat jYhomY"
+  >
+    <div
+      className="sc-bdVaJa edgMnc"
+    >
+       
+      <p
+        id="title"
+        onClick={[Function]}
+      >
+         
+        Meow
+         
+      </p>
+    </div>
+    <div
+      className="sc-bwzfXH laSsVf"
+    >
+       
+      <p
+        id="title"
+        onClick={[Function]}
+      >
+         
+        Wow wow
+         
+      </p>
+    </div>
   </div>
   <div>
     <div>

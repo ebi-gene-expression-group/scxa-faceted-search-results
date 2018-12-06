@@ -155,7 +155,7 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
             className="css-1wy0on6"
           >
             <span
-              className="sc-bdVaJa jcfyVD"
+              className="sc-bxivhb iCJrRm"
               cx={[Function]}
             />
           </div>
@@ -261,7 +261,7 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
             className="css-1wy0on6"
           >
             <span
-              className="sc-bdVaJa jcfyVD"
+              className="sc-bxivhb iCJrRm"
               cx={[Function]}
             />
           </div>
@@ -276,6 +276,36 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
       <h4>
         
       </h4>
+      <div
+        className="sc-htpNat jYhomY"
+      >
+        <div
+          className="sc-bdVaJa edgMnc"
+        >
+           
+          <p
+            id="title"
+            onClick={[Function]}
+          >
+             
+            Meow
+             
+          </p>
+        </div>
+        <div
+          className="sc-bwzfXH laSsVf"
+        >
+           
+          <p
+            id="title"
+            onClick={[Function]}
+          >
+             
+            Wow wow
+             
+          </p>
+        </div>
+      </div>
       <div>
         <div>
           <p>
