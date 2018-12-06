@@ -1,19 +1,34 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
-const EpisodeCard = ({title}) =>
+const ExperimentTableCard = ({title}) =>
   <div>
     <p>{title}</p>
   </div>
 
-EpisodeCard.propTypes = {
+ExperimentTableCard.propTypes = {
   title: PropTypes.string.isRequired
 }
 
-const EpisodesHeader = () =>
-  <div>
-    <span>Episode title</span>
-  </div>
+const IconDiv = styled.div`
+  width: 15%;
+  text-align: center;
+`
+const BitDiv = styled.div`
+  width: 25%;
+  text-align: center;
+`
+const DoveDiv = styled.div`
+  width: 25%;
+  text-align: center;
+`
+
+const ExperimentTableHeader = () => 
+({  
+    'container': DoveDiv,
+    'titles': { 'Meow': IconDiv, 'Wow wow': BitDiv}
+})
 
 // Stolen from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 const getRandomInt = (min, max) => {
@@ -177,4 +192,4 @@ const episodes = [
   }
 ]
 
-export {getRandomInt, vindicators, episodes, EpisodesHeader, EpisodeCard}
+export {getRandomInt, vindicators, episodes, ExperimentTableCard, ExperimentTableHeader}
