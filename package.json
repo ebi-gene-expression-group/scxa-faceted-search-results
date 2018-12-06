@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "prepack": "rm -rf lib && babel src -d lib --copy-files",
-    "test": "jest --coverage --verbose",
+    "test": "jest --coverage --verbose --u",
     "posttest": "cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js",
     "postversion": "npm publish",
     "postpublish": "git push && git push --tags"
@@ -33,10 +33,12 @@
     "url": "https://github.com/ebi-gene-expression-group/scxa-gene-search-results.git"
   },
   "dependencies": {
+    "format-number": "^3.0.0",
     "lodash": "^4.17.11",
     "prop-types": "^15.6.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
+    "react-ebi-species": "^2.0.0",
     "react-select": "^2.1.1",
     "react-tooltip": "^3.9.0",
     "styled-components": "^4.0.3",
