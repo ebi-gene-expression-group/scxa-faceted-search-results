@@ -3,20 +3,20 @@ import PropTypes from 'prop-types'
 import {ResultPropTypes} from './ResultPropTypes'
 
 function dynamicSort(property, sortState) {
-    const sortOrder = sortState ?  -1 : 1
-    return function (a,b) {
-        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0
-        return result * sortOrder
-    }
+  const sortOrder = sortState ?  -1 : 1
+  return function (a,b) {
+    var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0
+    return result * sortOrder
+  }
 }
 
 function titleCase(str) {
-   var splitStr = str.toLowerCase().split(' ');
-   for (var i = 0; i < splitStr.length; i++) {
-       splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-   }
-   // Directly return the joined string
-   return splitStr.join('').charAt(0).toLowerCase()+splitStr.join('').substring(1); 
+  const splitStr = str.toLowerCase().split(' ').map((string, index)=>
+    index === 0 ?
+      string.charAt(0).toLowerCase() + string.substring(1) :
+      string.charAt(0).toUpperCase() + string.substring(1)    
+  )
+  return splitStr.join('')
 }
 
 class FilterList extends React.Component {
@@ -24,7 +24,8 @@ class FilterList extends React.Component {
     super(props)
 
     this.state = {
-      sortTitle: {name: `species`, sortState: true}
+      sortTitle: `species`,
+      sortState: false
     }
     this.constructTableHeader = this.constructTableHeader.bind(this)
     this.sortTable = this.sortTable.bind(this)
@@ -34,14 +35,20 @@ class FilterList extends React.Component {
     const tableTitles = Object.keys(ResultsHeaderClass().titles)
     const tableTitleDivs = Object.values(ResultsHeaderClass().titles)
     const ContainerDiv = ResultsHeaderClass().container
+
     const TableHeader = () => 
       <ContainerDiv>
-        { tableTitles.map((title, index) => {
+        { 
+          tableTitles.map((title, index) => {
             const TitleDiv = tableTitleDivs[index]
+            console.log(title,  titleCase(title)===this.state.sortTitle)
             return Object.keys(this.props.filteredResults[0].element).includes(titleCase(title)) ?
-              this.state.sortTitle.name===titleCase(title) && this.state.sortTitle.sortState ?
-                <TitleDiv> <p key={title} id={`title`} onClick={this.sortTable}>{title} &darr;</p></TitleDiv> :
-                <TitleDiv> <p key={title} id={`title`} onClick={this.sortTable}>{title} &uarr;</p></TitleDiv> 
+              titleCase(title)===this.state.sortTitle ?
+                this.state.sortState ?
+                  <TitleDiv style={{opacity: 1}}> <p key={title} id={`title`} onClick={this.sortTable} opacity={1}>{title} &darr;</p></TitleDiv> :
+                  <TitleDiv style={{opacity: 1}}> <p key={title} id={`title`} onClick={this.sortTable} opacity={1}>{title} &uarr;</p></TitleDiv> 
+                :
+                <TitleDiv> <p key={title} id={`title`} onClick={this.sortTable} opacity={1}>{title} &darr;</p></TitleDiv> 
               :
               <TitleDiv> <p key={title} id={`title`} onClick={this.sortTable}>{title}</p></TitleDiv> 
           }) 
@@ -53,7 +60,8 @@ class FilterList extends React.Component {
 
   sortTable(event){
     this.setState({
-      sortTitle: {name: titleCase(event.target.innerText).slice(0, -1), sortState: !this.state.sortTitle.sortState}
+      sortTitle: titleCase(event.target.innerText).slice(0, -1), 
+      sortState: escape(event.target.innerText.slice(-1))===`%u2191`
     })
   }
 
@@ -62,8 +70,9 @@ class FilterList extends React.Component {
 
     const filteredElements = filteredResults.map((result) => result.element)
     const TableHeader = this.constructTableHeader(ResultsHeaderClass)
+    Object.keys(filteredResults[0].element).includes(this.state.sortTitle) && 
+      filteredElements.sort(dynamicSort(this.state.sortTitle, this.state.sortState))
 
-    filteredElements.sort(dynamicSort(this.state.sortTitle.name, this.state.sortTitle.sortState))
     return (
       <div>
         <h4>{resultsMessage}</h4>
