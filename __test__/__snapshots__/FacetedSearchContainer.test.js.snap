@@ -287,9 +287,8 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
             id="title"
             onClick={[Function]}
           >
-             
             Meow
-             
+             ↑
           </p>
         </div>
         <div
@@ -300,9 +299,8 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
             id="title"
             onClick={[Function]}
           >
-             
             Wow wow
-             
+             ↑
           </p>
         </div>
       </div>
