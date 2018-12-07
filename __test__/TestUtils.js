@@ -54,7 +54,9 @@ const vindicators = [
 const episodes = [
   {
     element: {
-      title: `Raising Gazorpazorp`
+      title: `Raising Gazorpazorp`,
+      meow: `rasperry`,
+      wowWow: `blueberry`
     },
     facets: [
       {
@@ -84,7 +86,9 @@ const episodes = [
   },
   {
     element: {
-      title: `The wedding squanchers`
+      title: `The wedding squanchers`,
+      meow: `rasperry`,
+      wowWow: `blueberry`
     },
     facets: [
       {
@@ -114,7 +118,9 @@ const episodes = [
   },
   {
     element: {
-      title: `The Rickshank redemption`
+      title: `The Rickshank redemption`,
+      meow: `rasperry`,
+      wowWow: `blueberry`
     },
     facets: [
       {
@@ -138,7 +144,9 @@ const episodes = [
   },
   {
     element: {
-      title: `Ricksy business`
+      title: `Ricksy business`,
+      meow: `rasperry`,
+      wowWow: `blueberry`
     },
     facets: [
       {
@@ -162,7 +170,9 @@ const episodes = [
   },
   {
     element: {
-      title: `Close Rick-counters of the Rick kind`
+      title: `Close Rick-counters of the Rick kind`,
+      meow: `rasperry`,
+      wowWow: `blueberry`
     },
     facets: [
       {
