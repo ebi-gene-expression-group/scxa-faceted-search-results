@@ -25,7 +25,7 @@ class FilterList extends React.Component {
 
     this.state = {
       sortTitle: `species`,
-      sortState: false
+      sortState: true
     }
     this.constructTableHeader = this.constructTableHeader.bind(this)
     this.sortTable = this.sortTable.bind(this)
@@ -41,16 +41,15 @@ class FilterList extends React.Component {
         { 
           tableTitles.map((title, index) => {
             const TitleDiv = tableTitleDivs[index]
-            console.log(title,  titleCase(title)===this.state.sortTitle)
             return Object.keys(this.props.filteredResults[0].element).includes(titleCase(title)) ?
               titleCase(title)===this.state.sortTitle ?
                 this.state.sortState ?
-                  <TitleDiv style={{opacity: 1}}> <p key={title} id={`title`} onClick={this.sortTable} opacity={1}>{title} &darr;</p></TitleDiv> :
-                  <TitleDiv style={{opacity: 1}}> <p key={title} id={`title`} onClick={this.sortTable} opacity={1}>{title} &uarr;</p></TitleDiv> 
+                  <TitleDiv key={title} style={{opacity: 1}}> <p id={`title`} onClick={this.sortTable} opacity={1}>{title} &darr;</p></TitleDiv> :
+                  <TitleDiv key={title} style={{opacity: 1}}> <p id={`title`} onClick={this.sortTable} opacity={1}>{title} &uarr;</p></TitleDiv> 
                 :
-                <TitleDiv> <p key={title} id={`title`} onClick={this.sortTable} opacity={1}>{title} &darr;</p></TitleDiv> 
+                <TitleDiv key={title} > <p id={`title`} onClick={this.sortTable} opacity={1}>{title} &uarr;</p></TitleDiv> 
               :
-              <TitleDiv> <p key={title} id={`title`} onClick={this.sortTable}>{title}</p></TitleDiv> 
+              <TitleDiv key={title} > <p id={`title`} onClick={this.sortTable}>{title}</p></TitleDiv> 
           }) 
         }
       </ContainerDiv>
@@ -59,6 +58,7 @@ class FilterList extends React.Component {
   }
 
   sortTable(event){
+    Object.keys(this.props.filteredResults[0].element).includes(titleCase(event.target.innerText).slice(0, -1)) && 
     this.setState({
       sortTitle: titleCase(event.target.innerText).slice(0, -1), 
       sortState: escape(event.target.innerText.slice(-1))===`%u2191`
@@ -70,8 +70,7 @@ class FilterList extends React.Component {
 
     const filteredElements = filteredResults.map((result) => result.element)
     const TableHeader = this.constructTableHeader(ResultsHeaderClass)
-    Object.keys(filteredResults[0].element).includes(this.state.sortTitle) && 
-      filteredElements.sort(dynamicSort(this.state.sortTitle, this.state.sortState))
+    filteredElements.sort(dynamicSort(this.state.sortTitle, this.state.sortState))
 
     return (
       <div>
