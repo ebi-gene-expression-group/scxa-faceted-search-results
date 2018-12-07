@@ -16,31 +16,47 @@ const IconDiv = styled.div`
   width: 15%;
   text-align: center;
   cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s;
+  :hover {opacity: 1};
 `
 
 const MarkerDiv = styled.div`
   width: 15%;
   text-align: center;
   cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s;
+  :hover {opacity: 1};
 `
 
 const TitleDiv = styled.div`
   width: 40%;
   text-align: center;
   cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s;
+  :hover {opacity: 1};
 `
 
 const VariableDiv = styled.div`
   width: 20%;
   text-align: center;
   cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s;
+  :hover {opacity: 1};
 `
 
 const CountDiv = styled.div`
   width: 10%;
   text-align: center;
   cursor: pointer;
+  opacity: 0.6;
+  transition: 0.3s;
+  :hover {opacity: 1};
 `
+
 
 const ExperimentTableHeader = () => 
 ({  
