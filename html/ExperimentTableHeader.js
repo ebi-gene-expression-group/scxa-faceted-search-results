@@ -15,26 +15,31 @@ const CardContainerDiv = styled.div`
 const IconDiv = styled.div`
   width: 15%;
   text-align: center;
+  cursor: pointer;
 `
 
 const MarkerDiv = styled.div`
   width: 15%;
   text-align: center;
+  cursor: pointer;
 `
 
 const TitleDiv = styled.div`
   width: 40%;
   text-align: center;
+  cursor: pointer;
 `
 
 const VariableDiv = styled.div`
   width: 20%;
   text-align: center;
+  cursor: pointer;
 `
 
 const CountDiv = styled.div`
   width: 10%;
   text-align: center;
+  cursor: pointer;
 `
 
 const ExperimentTableHeader = () => 
