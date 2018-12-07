@@ -2,15 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {ResultPropTypes} from './ResultPropTypes'
 
-function dynamicSort(property) {
-    var sortOrder = 1;
-    if(property[0] === "-") {
-        sortOrder = -1;
-        property = property.substr(1);
-    }
+function dynamicSort(property, sortState) {
+    const sortOrder = sortState ?  -1 : 1
     return function (a,b) {
-        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0;
-        return result * sortOrder;
+        var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0
+        return result * sortOrder
     }
 }
 
@@ -28,7 +24,7 @@ class FilterList extends React.Component {
     super(props)
 
     this.state = {
-      sortTitle: `species`
+      sortTitle: {name: `species`, sortState: true}
     }
     this.constructTableHeader = this.constructTableHeader.bind(this)
     this.sortTable = this.sortTable.bind(this)
@@ -41,8 +37,13 @@ class FilterList extends React.Component {
     const TableHeader = () => 
       <ContainerDiv>
         { tableTitles.map((title, index) => {
-            let TitleDiv = tableTitleDivs[index]
-            return <TitleDiv> <p key={title} id={`title`} onClick={this.sortTable}> {title} </p></TitleDiv>
+            const TitleDiv = tableTitleDivs[index]
+            return Object.keys(this.props.filteredResults[0].element).includes(titleCase(title)) ?
+              this.state.sortTitle.name===titleCase(title) && this.state.sortTitle.sortState ?
+                <TitleDiv> <p key={title} id={`title`} onClick={this.sortTable}>{title} &darr;</p></TitleDiv> :
+                <TitleDiv> <p key={title} id={`title`} onClick={this.sortTable}>{title} &uarr;</p></TitleDiv> 
+              :
+              <TitleDiv> <p key={title} id={`title`} onClick={this.sortTable}>{title}</p></TitleDiv> 
           }) 
         }
       </ContainerDiv>
@@ -51,9 +52,8 @@ class FilterList extends React.Component {
   }
 
   sortTable(event){
-    console.log(titleCase(event.target.innerText))
     this.setState({
-      sortTitle: titleCase(event.target.innerText)
+      sortTitle: {name: titleCase(event.target.innerText).slice(0, -1), sortState: !this.state.sortTitle.sortState}
     })
   }
 
@@ -63,7 +63,7 @@ class FilterList extends React.Component {
     const filteredElements = filteredResults.map((result) => result.element)
     const TableHeader = this.constructTableHeader(ResultsHeaderClass)
 
-    filteredElements.sort(dynamicSort(this.state.sortTitle))
+    filteredElements.sort(dynamicSort(this.state.sortTitle.name, this.state.sortTitle.sortState))
     return (
       <div>
         <h4>{resultsMessage}</h4>
