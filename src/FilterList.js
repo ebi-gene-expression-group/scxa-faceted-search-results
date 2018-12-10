@@ -5,18 +5,18 @@ import {ResultPropTypes} from './ResultPropTypes'
 function dynamicSort(property, sortState) {
   const sortOrder = sortState ?  -1 : 1
   return function (a,b) {
-    var result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0
+    let result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0
     return result * sortOrder
   }
 }
 
 function titleCase(str) {
-  const splitStr = str.toLowerCase().split(' ').map((string, index)=>
+  const splitStr = str.toLowerCase().split(` `).map((string, index)=>
     index === 0 ?
       string.charAt(0).toLowerCase() + string.substring(1) :
       string.charAt(0).toUpperCase() + string.substring(1)    
   )
-  return splitStr.join('')
+  return splitStr.join(``)
 }
 
 class FilterList extends React.Component {
@@ -42,14 +42,14 @@ class FilterList extends React.Component {
           tableTitles.map((title, index) => {
             const TitleDiv = tableTitleDivs[index]
             return Object.keys(this.props.filteredResults[0].element).includes(titleCase(title)) ?
-                    titleCase(title) === this.state.sortTitle ?
-                      this.state.sortState ?
-                        <TitleDiv key={title} style={{opacity: 1}}> <p id={`selected`} onClick={this.sortTable}>{title} &darr;</p></TitleDiv> :
-                        <TitleDiv key={title} style={{opacity: 1}}> <p id={`selected`} onClick={this.sortTable}>{title} &uarr;</p></TitleDiv> 
-                      :
-                      <TitleDiv key={title}> <p id={`title`} onClick={this.sortTable}>{title} &uarr;</p></TitleDiv> 
-                    :
-                    <TitleDiv key={title}> <p id={`title`} onClick={this.sortTable}>{title}</p></TitleDiv> 
+              titleCase(title) === this.state.sortTitle ?
+                this.state.sortState ?
+                  <TitleDiv key={title} style={{opacity: 1}}> <p id={`selected`} onClick={this.sortTable}>{title} &darr;</p></TitleDiv> :
+                  <TitleDiv key={title} style={{opacity: 1}}> <p id={`selected`} onClick={this.sortTable}>{title} &uarr;</p></TitleDiv> 
+                :
+                <TitleDiv key={title}> <p id={`title`} onClick={this.sortTable}>{title} &uarr;</p></TitleDiv> 
+              :
+              <TitleDiv key={title}> <p id={`title`} onClick={this.sortTable}>{title}</p></TitleDiv> 
           }) 
         }
       </ContainerDiv>

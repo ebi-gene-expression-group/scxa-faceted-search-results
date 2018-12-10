@@ -40,23 +40,23 @@ class FetchLoader extends React.Component {
     return(
       error ?
         <CalloutAlert error={error} /> :
-      loading ?
-        <div id={`loader`} className={`row expanded`}>
-          <div className={`small-12 columns`}>
-            <h5>Loading, please wait...</h5>
-          </div>
-        </div> :
-        data.results && data.results.length > 0 ?
-          <FacetedSearchContainer
-            {...data}
-            ResultsHeaderClass={ResultsHeaderClass}
-            ResultElementClass={ResultElementClass}
-            resultsMessage={resultsMessageFormatter(data)}/> :
-          <div className={`row expanded`}>
+        loading ?
+          <div id={`loader`} className={`row expanded`}>
             <div className={`small-12 columns`}>
-              <h5>{noResultsMessageFormatter(data)}</h5>
+              <h5>Loading, please wait...</h5>
             </div>
-          </div>
+          </div> :
+          data.results && data.results.length > 0 ?
+            <FacetedSearchContainer
+              {...data}
+              ResultsHeaderClass={ResultsHeaderClass}
+              ResultElementClass={ResultElementClass}
+              resultsMessage={resultsMessageFormatter(data)}/> :
+            <div className={`row expanded`}>
+              <div className={`small-12 columns`}>
+                <h5>{noResultsMessageFormatter(data)}</h5>
+              </div>
+            </div>
     )
   }
 
@@ -99,9 +99,9 @@ class FetchLoader extends React.Component {
   componentDidCatch(error, info) {
     this.setState({
       error: {
-          description: `There was a problem rendering this component.`,
-          name: error.name,
-          message: `${error.message} – ${info}`
+        description: `There was a problem rendering this component.`,
+        name: error.name,
+        message: `${error.message} – ${info}`
       }
     })
   }

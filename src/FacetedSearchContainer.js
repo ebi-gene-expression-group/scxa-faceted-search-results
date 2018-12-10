@@ -106,8 +106,8 @@ class FacetedSearchContainer extends React.Component {
     }
 
     this.setState({
-       facets: nextFacets,
-       selectedFacets: nextSelectedFacets
+      facets: nextFacets,
+      selectedFacets: nextSelectedFacets
     })
   }
 
@@ -128,7 +128,7 @@ class FacetedSearchContainer extends React.Component {
 
         <div className={`small-12 medium-8 large-9 columns`}>
           <FilterList {...{resultsMessage, ResultElementClass, ResultsHeaderClass}}
-                      filteredResults={this._filterResults(selectedFacets)}/>
+            filteredResults={this._filterResults(selectedFacets)}/>
         </div>
         <ReactTooltip effect={`solid`}/>
       </div>
