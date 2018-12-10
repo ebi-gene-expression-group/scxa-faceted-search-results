@@ -28,11 +28,11 @@ describe(`FilterSidebar`, () => {
 
   const noTooltipProps = {
     facets:[
-          {
-            group: `Guest character`,
-            value: `birdperson`,
-            label: `Birdperson`
-          }],
+      {
+        group: `Guest character`,
+        value: `birdperson`,
+        label: `Birdperson`
+      }],
     checkboxFacetGroups: [`Season`],
     onChange: () => {}
   }

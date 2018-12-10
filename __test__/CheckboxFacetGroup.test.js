@@ -40,8 +40,6 @@ describe(`CheckboxFacetGroup`, () => {
   test(`displays tooltip if it exists`, () => {
     const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
     const descriptions = [...new Set(uniqueFacets.map((facet) => facet.description))]
-    const randomCheckboxFacetGroup = groups[getRandomInt(0, groups.length)]
-    const randomCheckboxFacetGroupDescription = descriptions[getRandomInt(0, descriptions.length)]
 
     const wrapper = mount(<CheckboxFacetGroup {...propsWithTooltip} />)
     expect(wrapper.find(`sup`).first().html()).toEqual(expect.stringMatching(`data-tip`))

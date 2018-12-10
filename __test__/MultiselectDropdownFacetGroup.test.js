@@ -40,8 +40,6 @@ describe(`MultiselectDropdownFacetGroup`, () => {
   test(`displays tooltip if it exists`, () => {
     const groups = [...new Set(uniqueFacets.map((facet) => facet.group))]
     const descriptions = [...new Set(uniqueFacets.map((facet) => facet.description))]
-    const randomMultiselectFacetGroup = groups[getRandomInt(0, groups.length)]
-    const randomMultiselectFacetGroupDescription = descriptions[getRandomInt(0, descriptions.length)]
 
     const wrapper = mount(<MultiselectDropdownFacetGroup {...propsWithTooltip} />)
     expect(wrapper.find(`sup`).first().html()).toEqual(expect.stringMatching(`data-tip`))
