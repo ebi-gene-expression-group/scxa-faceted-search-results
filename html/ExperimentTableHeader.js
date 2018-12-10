@@ -59,7 +59,7 @@ const CountDiv = styled.div`
 
 
 const ExperimentTableHeader = () => 
-({  
+  ({  
     'container': CardContainerDiv,
     'titles': {
       'Species': IconDiv,
@@ -67,6 +67,6 @@ const ExperimentTableHeader = () =>
       'Title': TitleDiv,
       'Experimental variables': VariableDiv,
       'Number of assays': CountDiv}
-})
+  })
 
 export default ExperimentTableHeader
