@@ -15,7 +15,7 @@ const titleCase = (str) =>
     index === 0 ?
       string.charAt(0).toLowerCase() + string.substring(1) :
       string.charAt(0).toUpperCase() + string.substring(1)    
-    ).join(``)
+  ).join(``)
 
 class FilterList extends React.Component {
   constructor(props) {

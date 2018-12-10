@@ -19,7 +19,8 @@ const props = {
 describe(`FilterList`, () => {
   test(`renders as many components of ResultElementClass as filtered results`, () => {
     const wrapper = mount(<FilterList {...props} filteredResults={episodes} />)
-    expect(wrapper.find(`#title`)).toHaveLength(Object.keys(ExperimentTableHeader().titles).length)
+    expect(wrapper.find(`#title`)).toHaveLength(Object.keys(ExperimentTableHeader().titles).length-1)
+    expect(wrapper.find(`#selected`)).toHaveLength(1)
     expect(wrapper.find(ExperimentTableCard)).toHaveLength(episodes.length)
   })
 
@@ -36,7 +37,6 @@ describe(`FilterList`, () => {
       return splitStr.join('')
     }
     wrapper.setState({sortTitle: mockState(titleNames[getRandomInt(0, titleNames.length)])})
-    console.log(wrapper.state())
     expect(wrapper.find(`#title`)).toHaveLength(1)
     expect(wrapper.find(`#selected`)).toHaveLength(1)
   })

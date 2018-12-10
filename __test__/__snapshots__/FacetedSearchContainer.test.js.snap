@@ -281,14 +281,19 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
       >
         <div
           className="sc-bdVaJa edgMnc"
+          style={
+            Object {
+              "opacity": 1,
+            }
+          }
         >
            
           <p
-            id="title"
+            id="selected"
             onClick={[Function]}
           >
             Meow
-             ↑
+             ▼
           </p>
         </div>
         <div
@@ -300,7 +305,7 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
             onClick={[Function]}
           >
             Wow wow
-             ↑
+             ▲
           </p>
         </div>
       </div>
