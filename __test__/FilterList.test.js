@@ -25,9 +25,8 @@ describe(`FilterList`, () => {
   })
 
   test(`highlights the user selected table header`, () => {
-    const randomFilteredResults = episodes.filter(() => Math.random() > 0.5)
     const titleNames = Object.keys(ExperimentTableHeader().titles)
-    const wrapper = mount(<FilterList {...props} filteredResults={randomFilteredResults} />)
+    const wrapper = mount(<FilterList {...props} filteredResults={episodes} />)
     const mockState = (str) => {
       const splitStr = str.toLowerCase().split(' ').map((string, index)=>
         index === 0 ?
