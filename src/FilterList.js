@@ -1,14 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import {ResultPropTypes} from './ResultPropTypes'
-
-const dynamicSort = (property, sortState) => {
-  const sortOrder = sortState ?  -1 : 1
-  return function (a, b) {
-    const result = (a[property] < b[property]) ? -1 : (a[property] > b[property]) ? 1 : 0
-    return result * sortOrder
-  }
-}
+import _ from 'lodash'
 
 const titleCase = (str) =>  
   str.toLowerCase().split(` `).map((string, index)=>
@@ -24,7 +17,7 @@ class FilterList extends React.Component {
     this.state = {
       sortTitle: titleCase(Object.keys(this.props.ResultsHeaderClass().titles)
         .filter(title => Object.keys(this.props.filteredResults[0].element).includes(titleCase(title)))[0]),
-      sortState: true
+      ascending: true
     }
     this.constructTableHeader = this.constructTableHeader.bind(this)
     this.sortTable = this.sortTable.bind(this)
@@ -42,11 +35,11 @@ class FilterList extends React.Component {
             const TitleDiv = tableTitleDivs[index]
             return Object.keys(this.props.filteredResults[0].element).includes(titleCase(title)) ?
               titleCase(title) === this.state.sortTitle ?
-                this.state.sortState ?
-                  <TitleDiv key={title} style={{opacity: 1}}> <p id={`selected`} onClick={this.sortTable}>{title} ▼</p></TitleDiv> :
-                  <TitleDiv key={title} style={{opacity: 1}}> <p id={`selected`} onClick={this.sortTable}>{title} ▲</p></TitleDiv> 
+                this.state.ascending ?
+                  <TitleDiv key={title} style={{opacity: 1}}> <p id={`selected`} onClick={this.sortTable}>{title} ▲</p></TitleDiv> :
+                  <TitleDiv key={title} style={{opacity: 1}}> <p id={`selected`} onClick={this.sortTable}>{title} ▼</p></TitleDiv>
                 :
-                <TitleDiv key={title}> <p id={`title`} onClick={this.sortTable}>{title} ▲</p></TitleDiv> 
+                <TitleDiv key={title}> <p id={`title`} onClick={this.sortTable}>{title} ▼</p></TitleDiv>
               :
               <TitleDiv key={title}> <p id={`title`} onClick={this.sortTable}>{title}</p></TitleDiv> 
           }) 
@@ -59,22 +52,23 @@ class FilterList extends React.Component {
   sortTable(event) {
     Object.keys(this.props.filteredResults[0].element).includes(titleCase(event.target.innerText).slice(0, -1)) && 
     this.setState({
-      sortTitle: titleCase(event.target.innerText).slice(0, -1), 
-      sortState: event.target.innerText.slice(-1) === `▲`
+      sortTitle: titleCase(event.target.innerText).slice(0, -1),
+      ascending: event.target.innerText.slice(-1) === `▼`
     })
   }
 
   render() {
     const {filteredResults, resultsMessage, ResultsHeaderClass, ResultElementClass} = this.props
-    const filteredElements = filteredResults.map((result) => result.element)
+
+    const filteredElements = _.sortBy(filteredResults.map((result) => result.element), this.state.sortTitle)
+    const sortedElements = this.state.ascending ? filteredElements :  filteredElements.reverse()
     const TableHeader = this.constructTableHeader(ResultsHeaderClass)
-    filteredElements.sort(dynamicSort(this.state.sortTitle, this.state.sortState))
 
     return (
       <div>
         <h4>{resultsMessage}</h4>
-        { filteredElements.length && ResultsHeaderClass && <TableHeader /> }
-        { filteredElements.map((element, index) => <div key={index}><ResultElementClass {...element}/></div>) }
+        { sortedElements.length && ResultsHeaderClass && <TableHeader /> }
+        { sortedElements.map((element, index) => <div key={index}><ResultElementClass {...element}/></div>) }
       </div>
     )
   }
