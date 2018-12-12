@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from "prop-types"
 
 const CardContainerDiv = styled.div`
   height: 100%;
@@ -42,10 +43,7 @@ const TitleDiv = styled.div`
 const VariableDiv = styled.div`
   width: 20%;
   text-align: center;
-  cursor: pointer;
   opacity: 0.6;
-  transition: 0.3s;
-  :hover {opacity: 1};
 `
 
 const CountDiv = styled.div`
@@ -57,16 +55,60 @@ const CountDiv = styled.div`
   :hover {opacity: 1};
 `
 
-
-const ExperimentTableHeader = () => 
-  ({  
-    'container': CardContainerDiv,
-    'titles': {
-      'Species': IconDiv,
-      'Marker genes': MarkerDiv,
-      'Title': TitleDiv,
-      'Experimental variables': VariableDiv,
-      'Number of assays': CountDiv}
+const ExperimentTableHeaderBasic = () =>
+  ({
+    'titles': [`Species`, `Marker genes`, `Title`, `Experimental variables`, `Number of assays`],
+    'styles': [IconDiv, MarkerDiv, TitleDiv, VariableDiv, CountDiv],
+    'attributes': [`species`, `makerGenes`, `experimentDescription`, null, `numberOfAssays`]
   })
+
+
+class ExperimentTableHeader extends  React.Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      sortTitle: `species`,
+      ascending: true
+    }
+
+    this.onClick = this.onClick.bind(this)
+  }
+
+  onClick(attribute, sortOrder){
+    this.props.onClick(sortOrder)
+    this.setState({
+      sortTitle: attribute,
+      ascending: sortOrder
+    })
+  }
+
+  render() {
+    const tableTitles = ExperimentTableHeaderBasic().titles
+    const tableTitleDivs = ExperimentTableHeaderBasic().styles
+    const jsonAttributes = ExperimentTableHeaderBasic().attributes
+
+    return(
+      <CardContainerDiv>
+        {
+          tableTitles.map((title, index) => {
+            const TitleDiv = tableTitleDivs[index]
+            const attribute = jsonAttributes[index]
+            return attribute ?
+              attribute === this.state.sortTitle ?
+                <TitleDiv key={title} style={{opacity: 1}}><span id={`selected`} onClick={() => this.onClick(attribute, !this.state.ascending)}>{`${title} `}
+                  {this.state.ascending ? <i className="icon icon-common icon-sort-up"/> : <i className="icon icon-common icon-sort-down"/>}</span></TitleDiv>
+                : <TitleDiv key={title}><span id={`title`} onClick={() => this.onClick(attribute, this.state.ascending)}>{title} <i className={`icon icon-common icon-sort`}/></span></TitleDiv>
+              : <TitleDiv key={title}><span id={`title`}>{title}</span></TitleDiv>
+          })
+        }
+      </CardContainerDiv>
+    )
+  }
+}
+
+ExperimentTableHeader.propTypes = {
+  onClick: PropTypes.func
+}
 
 export default ExperimentTableHeader
