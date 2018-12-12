@@ -293,7 +293,7 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
             onClick={[Function]}
           >
             Meow
-             ▼
+             ▲
           </p>
         </div>
         <div
@@ -305,7 +305,7 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
             onClick={[Function]}
           >
             Wow wow
-             ▲
+             ▼
           </p>
         </div>
       </div>
