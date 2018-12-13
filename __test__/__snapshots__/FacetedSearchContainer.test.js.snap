@@ -281,32 +281,13 @@ exports[`FacetedSearchContainer matches snapshot 1`] = `
       >
         <div
           className="sc-bdVaJa edgMnc"
-          style={
-            Object {
-              "opacity": 1,
-            }
-          }
         >
-           
-          <p
-            id="selected"
-            onClick={[Function]}
-          >
-            Meow
-             ▲
-          </p>
+          Meow
         </div>
         <div
           className="sc-bwzfXH laSsVf"
         >
-           
-          <p
-            id="title"
-            onClick={[Function]}
-          >
-            Wow wow
-             ▼
-          </p>
+          Wow wow
         </div>
       </div>
       <div>
