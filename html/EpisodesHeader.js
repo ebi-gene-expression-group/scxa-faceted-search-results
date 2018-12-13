@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import PropTypes from 'prop-types'
 
 const EpisodesHeaderDiv = styled.div`
   height: 100%;
@@ -25,10 +26,16 @@ const TitleDiv = styled.div`
   :hover {opacity: 1};
 `
 
-const EpisodesHeader = () =>
-  ({
-    'container': EpisodesHeaderDiv,
-    'titles': {'Episode Title': TitleDiv}
-  })
+
+const EpisodesHeader = (onClick) =>
+  <EpisodesHeaderDiv>
+    <TitleDiv onClick={() => onClick(`title`)}>
+            Episode Title
+    </TitleDiv>
+  </EpisodesHeaderDiv>
+
+EpisodesHeader.propTypes = {
+  onClick: PropTypes.func
+}
 
 export default EpisodesHeader
