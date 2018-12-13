@@ -24,11 +24,15 @@ const DoveDiv = styled.div`
   text-align: center;
 `
 
-const ExperimentTableHeader = () => 
-({  
-    'container': DoveDiv,
-    'titles': { 'Meow': IconDiv, 'Wow wow': BitDiv}
-})
+const ExperimentTableHeader = () =>
+  <DoveDiv>
+    <IconDiv>
+      Meow
+    </IconDiv>
+    <BitDiv>
+      Wow wow
+    </BitDiv>
+  </DoveDiv>
 
 // Stolen from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 const getRandomInt = (min, max) => {
