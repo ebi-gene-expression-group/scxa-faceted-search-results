@@ -113,30 +113,15 @@ class FacetedSearchContainer extends React.Component {
 
   render() {
     const {facets} = this.state
-    const {checkboxFacetGroups, ResultElementClass, ResultsHeaderClass, resultsMessage} = this.props
+    const {checkboxFacetGroups, ResultElementClass, ResultsHeaderClass, resultsMessage, results} = this.props
     const {selectedFacets} = this.state
-
-    const facetGroups =
-        _(facets)
-          .sortBy([`group`, `label`])
-          .groupBy(`group`)
-          .toPairs()
-          .partition((facetGroup) => checkboxFacetGroups.includes(facetGroup[0]))
-          .value()
-
-    const cleanCheckboxFacetGroups = facetGroups[0].map(checkFacet => {
-      const facet = checkFacet[0]===`Marker genes` ? `markerGenes` : `species`
-      return !this.props.results.every((result,index,arr) => result.element[facet]===arr[0].element[facet]) && checkFacet
-    })
-    
-    const cleanFacetGroups =  [cleanCheckboxFacetGroups ? cleanCheckboxFacetGroups : [], facetGroups[1]]
 
     return(
       <div className={`row expanded`}>
         {
           facets.length > 0 &&
           <div className={`small-12 medium-4 large-3 columns`}>
-            <FilterSidebar facetGroups={cleanFacetGroups} onChange={this._handleChange}/>
+            <FilterSidebar {...{facets, checkboxFacetGroups, results}} onChange={this._handleChange}/>
           </div>
         }
 
