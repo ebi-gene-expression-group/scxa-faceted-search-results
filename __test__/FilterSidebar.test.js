@@ -23,6 +23,7 @@ describe(`FilterSidebar`, () => {
   const props = {
     facets: uniqueFacets,
     checkboxFacetGroups: [`Season`],
+    results: episodes,
     onChange: () => {}
   }
 
@@ -33,6 +34,7 @@ describe(`FilterSidebar`, () => {
             value: `birdperson`,
             label: `Birdperson`
           }],
+    results: episodes,
     checkboxFacetGroups: [`Season`],
     onChange: () => {}
   }
