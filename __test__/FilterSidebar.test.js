@@ -27,13 +27,14 @@ describe(`FilterSidebar`, () => {
     onChange: () => {}
   }
 
+  console.log(uniqueFacets)
   const noTooltipProps = {
     facets:[
-          {
-            group: `Guest character`,
-            value: `birdperson`,
-            label: `Birdperson`
-          }],
+      {
+        group: `Guest character`,
+        value: `birdperson`,
+        label: `Birdperson`
+      }],
     results: episodes,
     checkboxFacetGroups: [`Season`],
     onChange: () => {}
@@ -59,6 +60,63 @@ describe(`FilterSidebar`, () => {
     const randomCheckboxFacetGroup = groups[getRandomInt(0, groups.length)]
     const wrapper = mount(<FilterSidebar {...noTooltipProps} checkboxFacetGroups={[randomCheckboxFacetGroup]} />)
     expect(wrapper.find(`sup`).exists()).toEqual(false)
+  })
+
+  test(`hides checkbox if all results share the same facets`, () => {
+
+    const sameSpecies = [
+      { group: `Species`,
+        value: `gazorpazorp`,
+        label: `Gazorpazorp`,
+        description: `Planets where events in this episode take place`,
+        disabled: false },
+      { group: `Species`,
+        value: `gazorpazorp`,
+        label: `Gazorpazorp`,
+        description: `Planets where events in this episode take place`,
+        disabled: false },
+      { group: `Species`,
+        value: `gazorpazorp`,
+        label: `Gazorpazorp`,
+        description: `Planets where events in this episode take place`,
+        disabled: false },
+      { group: `Guest character`,
+        value: `gwendolyn`,
+        label: `Gwendolyn`,
+        description:
+              `Guest characters that tag along for the adventures in this episodes`,
+        disabled: false },
+      { group: `Season`,
+        value: `1`,
+        label: `Season 1`,
+        disabled: false },
+      { group: `Guest character`,
+        value: `birdperson`,
+        label: `Birdperson`,
+        description:
+              `Guest characters that tag along for the adventures in this episodes`,
+        disabled: false },
+      { group: `Guest character`,
+        value: `squanchy`,
+        label: `Squanchy`,
+        description:
+              `Guest characters that tag along for the adventures in this episodes`,
+        disabled: false },
+      { group: `Season`,
+        value: `2`,
+        label: `Season 2`,
+        disabled: false },
+      { group: `Season`,
+        value: `3`,
+        label: `Season 3`,
+        disabled: false },
+      { group: `Season`,
+        value: `3`,
+        label: `Season 3`,
+        disabled: false }]
+
+    const wrapper = mount(<FilterSidebar facets={sameSpecies} checkboxFacetGroups={[`Species`]} results={episodes} onChange={() => {}} />)
+    expect(wrapper.find({ type: `checkbox` }).length).toBeLessThan(sameSpecies.length)
   })
 
   test(`matches snapshot`, () => {
