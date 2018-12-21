@@ -39,8 +39,11 @@ const vindicators = [
 const episodes = [
   {
     element: {
-      title: `Raising Gazorpazorp`
+      title: `Raising Gazorpazorp`,
+      markerGenes: [],
+      species: `animal`,
     },
+
     facets: [
       {
         group: `Planet`,
@@ -69,8 +72,11 @@ const episodes = [
   },
   {
     element: {
-      title: `The wedding squanchers`
+      title: `The wedding squanchers`,
+      markerGenes: [`var1`, `var2`],
+      species: `animal`,
     },
+
     facets: [
       {
         group: `Planet`,
@@ -99,8 +105,11 @@ const episodes = [
   },
   {
     element: {
-      title: `The Rickshank redemption`
+      title: `The Rickshank redemption`,
+      markerGenes: [`var1`, `var2`],
+      species: `animal`,
     },
+
     facets: [
       {
         group: `Guest character`,
@@ -123,8 +132,11 @@ const episodes = [
   },
   {
     element: {
-      title: `Ricksy business`
+      title: `Ricksy business`,
+      markerGenes: [`var3`, `var4`],
+      species: `plants`
     },
+
     facets: [
       {
         group: `Guest character`,
@@ -147,7 +159,9 @@ const episodes = [
   },
   {
     element: {
-      title: `Close Rick-counters of the Rick kind`
+      title: `Close Rick-counters of the Rick kind`,
+      markerGenes: [`var1`, `var2`],
+      species: `plants`
     },
     facets: [
       {
