@@ -5,11 +5,11 @@ import FacetGroupPropTypes from './FacetGroupPropTypes'
 import TooltipIcon from './TooltipIcon'
 
 const CheckboxOption = ({group, value, label, disabled, checked, onChange}) =>
-<div>
-  <input type={`checkbox`} {...{value, checked, disabled}}
-         onChange={() => onChange({group, label, value, disabled})}/>
-  <label style={disabled ? {color: `lightgrey`} : {}}>{label}</label>
-</div>
+  <div>
+    <input type={`checkbox`} {...{value, checked, disabled}}
+      onChange={() => onChange({group, label, value, disabled})}/>
+    <label style={disabled ? {color: `lightgrey`} : {}}>{label}</label>
+  </div>
 
 // In principle we don’t need this component to be stateful, but in doing so we can create a custom _handleChange
 // function that will ultimately call onChange(facetGroupName, facets); this allows us to have the same API as
@@ -40,14 +40,14 @@ class CheckboxFacetGroup extends React.Component {
           { facetGroupName }
           { facetGroupNameDescription && <TooltipIcon tooltipText={facetGroupNameDescription}/> }
         </h4>
-      {facets.map((facet) =>
-        <CheckboxOption {...facet}
-                        checked={checkedFacets.some((checkedFacet) => checkedFacet.value === facet.value)}
-                        onChange={this._handleChange}
-                        key={facet.value}/>
+        {facets.map((facet) =>
+          <CheckboxOption {...facet}
+            checked={checkedFacets.some((checkedFacet) => checkedFacet.value === facet.value)}
+            onChange={this._handleChange}
+            key={facet.value}/>
         )}
       </div>
-      )
+    )
   }
 }
 
