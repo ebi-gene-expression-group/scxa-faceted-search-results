@@ -27,7 +27,6 @@ describe(`FilterSidebar`, () => {
     onChange: () => {}
   }
 
-  console.log(uniqueFacets)
   const noTooltipProps = {
     facets:[
       {
