@@ -22,21 +22,7 @@ exports[`FilterList matches snapshot 1`] = `
   <div>
     <div>
       <p>
-        Raising Gazorpazorp
-      </p>
-    </div>
-  </div>
-  <div>
-    <div>
-      <p>
-        The wedding squanchers
-      </p>
-    </div>
-  </div>
-  <div>
-    <div>
-      <p>
-        The Rickshank redemption
+        Close Rick-counters of the Rick kind
       </p>
     </div>
   </div>
@@ -50,7 +36,21 @@ exports[`FilterList matches snapshot 1`] = `
   <div>
     <div>
       <p>
-        Close Rick-counters of the Rick kind
+        The Rickshank redemption
+      </p>
+    </div>
+  </div>
+  <div>
+    <div>
+      <p>
+        The wedding squanchers
+      </p>
+    </div>
+  </div>
+  <div>
+    <div>
+      <p>
+        Raising Gazorpazorp
       </p>
     </div>
   </div>
