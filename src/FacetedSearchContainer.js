@@ -24,6 +24,16 @@ class FacetedSearchContainer extends React.Component {
     }
 
     this._handleChange = this._handleChange.bind(this)
+    this._clearFacets = this._clearFacets.bind(this)
+  }
+
+  _clearFacets(facets, filteredResults){
+    const groupedFacetByResults = filteredResults.map( result => _.groupBy(result.facets,`group`))
+    const groupedFacetByAll = Object.keys(_.groupBy(facets,`group`))
+
+    const clearedFacet = groupedFacetByAll.filter(group => !groupedFacetByResults.every((result, idx, results) => _.isEqual(result[group],results[0][group])))
+
+    return facets.filter(facet => clearedFacet.includes(facet.group))
   }
 
   _filterResults(facets) {
@@ -115,13 +125,14 @@ class FacetedSearchContainer extends React.Component {
     const {facets} = this.state
     const {checkboxFacetGroups, ResultElementClass, ResultsHeaderClass, resultsMessage, results} = this.props
     const {selectedFacets} = this.state
+    const clearedFacets = this._clearFacets(facets, this._filterResults(selectedFacets))
 
     return(
       <div className={`row expanded`}>
         {
           facets.length > 0 &&
           <div className={`small-12 medium-4 large-3 columns`}>
-            <FilterSidebar {...{facets, checkboxFacetGroups, results}} onChange={this._handleChange}/>
+            <FilterSidebar {...{checkboxFacetGroups, results}} facets={clearedFacets} onChange={this._handleChange}/>
           </div>
         }
 
