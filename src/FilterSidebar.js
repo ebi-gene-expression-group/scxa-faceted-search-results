@@ -15,23 +15,17 @@ const FilterSidebar = ({facets, checkboxFacetGroups, results, onChange}) => {
         .partition((facetGroup) => checkboxFacetGroups.includes(facetGroup[0]))
         .value()
 
-  const cleanCheckboxFacetGroups = facetGroups[0].map(checkFacet => {
-    const facet = checkFacet[0]===`Marker genes` ? `markerGenes` : `species`
-    return !results.every((result,index,arr) => result.element[facet]===arr[0].element[facet]) && checkFacet
-  })
-
-  const cleanFacetGroups =  [cleanCheckboxFacetGroups ? cleanCheckboxFacetGroups : [], facetGroups[1]]
   // Facets as checkboxes go first by design
   return(
     [
-      cleanFacetGroups[0]
+      facetGroups[0]
         .map((facetGroup) => facetGroup &&
              <CheckboxFacetGroup facetGroupName={facetGroup[0]}
                facetGroupNameDescription={facetGroup[1][0].description}
                facets={facetGroup[1]}
                onChange={onChange}
                key={facetGroup[0]} />),
-      cleanFacetGroups[1]
+      facetGroups[1]
         .map((facetGroup) =>
           <MultiselectDropdownFacetGroup facetGroupName={facetGroup[0]}
             facetGroupNameDescription={facetGroup[1][0].description}
