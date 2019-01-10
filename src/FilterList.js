@@ -8,7 +8,7 @@ class FilterList extends React.Component {
     super(props)
 
     this.state = {
-      ascending: true
+      ascending: false
     }
 
     this.sortTable = this.sortTable.bind(this)

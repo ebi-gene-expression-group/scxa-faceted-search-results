@@ -59,7 +59,7 @@ const ExperimentTableHeaderBasic = () =>
   ({
     'titles': [`Species`, `Marker genes`, `Title`, `Experimental variables`, `Number of assays`],
     'styles': [IconDiv, MarkerDiv, TitleDiv, VariableDiv, CountDiv],
-    'attributes': [`species`, `makerGenes`, `experimentDescription`, null, `numberOfAssays`]
+    'attributes': [`species`, `markerGenes`, `experimentDescription`, null, `numberOfAssays`]
   })
 
 
@@ -68,8 +68,8 @@ class ExperimentTableHeader extends  React.Component {
     super(props)
 
     this.state = {
-      sortTitle: `species`,
-      ascending: true
+      sortTitle: `markerGenes`,
+      ascending: false
     }
 
     this.onClick = this.onClick.bind(this)
