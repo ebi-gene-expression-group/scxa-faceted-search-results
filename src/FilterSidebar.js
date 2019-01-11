@@ -6,7 +6,7 @@ import _ from "lodash"
 
 import {ResultPropTypes} from './ResultPropTypes'
 
-const FilterSidebar = ({facets, checkboxFacetGroups, onChange}) => {
+const FilterSidebar = ({facets, checkboxFacetGroups, results, onChange}) => {
   const facetGroups =
       _(facets)
         .sortBy([`group`, `label`])
