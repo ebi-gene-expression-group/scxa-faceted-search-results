@@ -20,7 +20,8 @@ class FacetedSearchContainer extends React.Component {
           .uniqWith(_.isEqual)
           .map((facet) => ({...facet, disabled: false}))
           .value(),
-      selectedFacets: {}  // TODO (?) Build initial state of checked filters from props if wrapped in React Router
+      selectedFacets: {} , // TODO (?) Build initial state of checked filters from props if wrapped in React Router,
+      currentSelection: ``
     }
 
     this._handleChange = this._handleChange.bind(this)
@@ -32,8 +33,8 @@ class FacetedSearchContainer extends React.Component {
     const groupedFacetByAll = Object.keys(_.groupBy(facets,`group`))
 
     const clearedFacet = groupedFacetByAll.filter(group => !groupedFacetByResults.every((result, idx, results) => _.isEqual(result[group],results[0][group])))
-
-    return facets.filter(facet => clearedFacet.includes(facet.group))
+    //clear shared facets in the initial search results and disable the facets after user selection in side bar, except the current selected facet
+    return facets.map(facet => {return {...facet, disabled: this.state.currentSelection!==facet.group && !clearedFacet.includes(facet.group)}})
   }
 
   _filterResults(facets) {
@@ -117,14 +118,14 @@ class FacetedSearchContainer extends React.Component {
 
     this.setState({
       facets: nextFacets,
-      selectedFacets: nextSelectedFacets
+      selectedFacets: nextSelectedFacets,
+      currentSelection: facetGroup
     })
   }
 
   render() {
-    const {facets} = this.state
+    const {facets, selectedFacets} = this.state
     const {checkboxFacetGroups, ResultElementClass, ResultsHeaderClass, resultsMessage, results} = this.props
-    const {selectedFacets} = this.state
     const clearedFacets = this._clearFacets(facets, this._filterResults(selectedFacets))
 
     return(
