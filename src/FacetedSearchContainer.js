@@ -12,29 +12,28 @@ class FacetedSearchContainer extends React.Component {
   constructor(props) {
     super(props)
 
+    const clearFacets = () =>{
+      const facets = _(props.results)
+        .flatMap(`facets`)
+        .compact()   // lodash will emit undefined if `facets` doesn’t exist :/
+        .uniqWith(_.isEqual)
+        .map((facet) => ({...facet, disabled: false}))
+        .value()
+      const groupedFacetByResults = props.results.map( result => _.groupBy(result.facets, `group`))
+      const groupedFacetByAll = Object.keys(_.groupBy(facets, `group`))
+
+      const clearedFacet = groupedFacetByAll.filter(group => !groupedFacetByResults.every((result, idx, results) => _.isEqual(result[group],results[0][group])))
+      //clear shared facets in the initial search results
+      return facets.filter(facet => clearedFacet.includes(facet.group))
+    }
+
     this.state = {
-      facets:
-        _(props.results)
-          .flatMap(`facets`)
-          .compact()   // lodash will emit undefined if `facets` doesn’t exist :/
-          .uniqWith(_.isEqual)
-          .map((facet) => ({...facet, disabled: false}))
-          .value(),
-      selectedFacets: {} , // TODO (?) Build initial state of checked filters from props if wrapped in React Router,
-      currentSelection: ``
+      facets: clearFacets(),
+      selectedFacets: {} // TODO (?) Build initial state of checked filters from props if wrapped in React Router,
     }
 
     this._handleChange = this._handleChange.bind(this)
-    this._clearFacets = this._clearFacets.bind(this)
-  }
-
-  _clearFacets(facets, filteredResults){
-    const groupedFacetByResults = filteredResults.map( result => _.groupBy(result.facets,`group`))
-    const groupedFacetByAll = Object.keys(_.groupBy(facets,`group`))
-
-    const clearedFacet = groupedFacetByAll.filter(group => !groupedFacetByResults.every((result, idx, results) => _.isEqual(result[group],results[0][group])))
-    //clear shared facets in the initial search results and disable the facets after user selection in side bar, except the current selected facet
-    return facets.map(facet => {return {...facet, disabled: this.state.currentSelection!==facet.group && !clearedFacet.includes(facet.group)}})
+    this._filterResults = this._filterResults.bind(this)
   }
 
   _filterResults(facets) {
@@ -118,22 +117,20 @@ class FacetedSearchContainer extends React.Component {
 
     this.setState({
       facets: nextFacets,
-      selectedFacets: nextSelectedFacets,
-      currentSelection: facetGroup
+      selectedFacets: nextSelectedFacets
     })
   }
 
   render() {
     const {facets, selectedFacets} = this.state
-    const {checkboxFacetGroups, ResultElementClass, ResultsHeaderClass, resultsMessage, results} = this.props
-    const clearedFacets = this._clearFacets(facets, this._filterResults(selectedFacets))
+    const {checkboxFacetGroups, ResultElementClass, ResultsHeaderClass, resultsMessage} = this.props
 
     return(
       <div className={`row expanded`}>
         {
           facets.length > 0 &&
           <div className={`small-12 medium-4 large-3 columns`}>
-            <FilterSidebar {...{checkboxFacetGroups, results}} facets={clearedFacets} onChange={this._handleChange}/>
+            <FilterSidebar {...{checkboxFacetGroups, facets}} onChange={this._handleChange}/>
           </div>
         }
 
