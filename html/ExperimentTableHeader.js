@@ -75,11 +75,11 @@ class ExperimentTableHeader extends  React.Component {
     this.onClick = this.onClick.bind(this)
   }
 
-  onClick(attribute, sortOrder){
-    this.props.onClick(sortOrder, attribute)
+  onClick(attribute){
+    this.props.onClick(attribute)
     this.setState({
       sortTitle: attribute,
-      ascending: sortOrder
+      ascending: !this.state.ascending
     })
   }
 
@@ -96,7 +96,7 @@ class ExperimentTableHeader extends  React.Component {
             const attribute = jsonAttributes[index]
             return attribute ?
               attribute === this.state.sortTitle ?
-                <TitleDiv key={title} style={{opacity: 1}}><span id={`selected`} onClick={() => this.onClick(attribute, !this.state.ascending)}>{`${title} `}
+                <TitleDiv key={title} style={{opacity: 1}}><span id={`selected`} onClick={() => this.onClick(attribute)}>{`${title} `}
                   {this.state.ascending ? <i className="icon icon-common icon-sort-up"/> : <i className="icon icon-common icon-sort-down"/>}</span></TitleDiv>
                 : <TitleDiv key={title}><span id={`title`} onClick={() => this.onClick(attribute, this.state.ascending)}>{title} <i className={`icon icon-common icon-sort`}/></span></TitleDiv>
               : <TitleDiv key={title}><span id={`title`}>{title}</span></TitleDiv>
@@ -108,7 +108,7 @@ class ExperimentTableHeader extends  React.Component {
 }
 
 ExperimentTableHeader.propTypes = {
-  onClick: PropTypes.func
+  onClick: PropTypes.func.isRequired
 }
 
 export default ExperimentTableHeader
