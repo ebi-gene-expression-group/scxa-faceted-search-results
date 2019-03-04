@@ -15,6 +15,8 @@ const IconDiv = styled.div`
   width: 15%;
   text-align: center;
 `
+IconDiv.displayName = 'IconDiv'
+
 const BitDiv = styled.div`
   width: 25%;
   text-align: center;
@@ -24,15 +26,19 @@ const DoveDiv = styled.div`
   text-align: center;
 `
 
-const ExperimentTableHeader = () =>
+const ExperimentTableHeader = ({onClick}) =>
   <DoveDiv>
-    <IconDiv>
+    <IconDiv onClick={()=>onClick(`test`)}>
       Meow
     </IconDiv>
-    <BitDiv>
+    <BitDiv onClick={()=>onClick(`test`)}>
       Wow wow
     </BitDiv>
   </DoveDiv>
+
+ExperimentTableHeader.propTypes = {
+	onClick: PropTypes.func.isRequired
+}
 
 // Stolen from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
 const getRandomInt = (min, max) => {
