@@ -11,13 +11,13 @@ class FilterList extends React.Component {
       ascending: false
     }
 
-    this.sortTable = this.sortTable.bind(this)
+    this.sortEntries = this.sortEntries.bind(this)
   }
 
-  sortTable(sortOrder, attribute){
+  sortEntries(attribute){
     this.setState({
       sortTitle: attribute,
-      ascending: sortOrder
+      ascending: !this.state.ascending
     })
   }
 
@@ -30,7 +30,7 @@ class FilterList extends React.Component {
     return (
       <div>
         <h4>{resultsMessage}</h4>
-        { sortedElements.length && <ResultsHeaderClass onClick={this.sortTable}/> }
+        { sortedElements.length && <ResultsHeaderClass onClick={this.sortEntries}/> }
         { sortedElements.map((element, index) => <div key={index}><ResultElementClass {...element}/></div>) }
       </div>
     )
