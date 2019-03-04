@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { xorBy as _xorBy } from 'lodash'
 
 import FacetGroupPropTypes from './FacetGroupPropTypes'
@@ -10,6 +11,15 @@ const CheckboxOption = ({group, value, label, disabled, checked, onChange}) =>
       onChange={() => onChange({group, label, value, disabled})}/>
     <label style={disabled ? {color: `lightgrey`} : {}}>{label}</label>
   </div>
+
+CheckboxOption.propTypes = {
+  group: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  disabled: PropTypes.bool.isRequired,
+  checked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRrequired
+}
 
 // In principle we don’t need this component to be stateful, but in doing so we can create a custom _handleChange
 // function that will ultimately call onChange(facetGroupName, facets); this allows us to have the same API as

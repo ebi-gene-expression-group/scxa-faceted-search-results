@@ -60,7 +60,7 @@ class FetchLoader extends React.Component {
     )
   }
 
-  async componentDidUpdate(prevProps, prevState) {
+  async componentDidUpdate(/*prevProps, prevState*/) {
     if (this.state.data === null && this.state.error === null) {
       await this._loadAsyncData(URI(this.props.resource, this.props.host).toString())
     }
