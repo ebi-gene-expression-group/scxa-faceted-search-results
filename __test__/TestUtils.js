@@ -40,7 +40,6 @@ const episodes = [
   {
     element: {
       title: `Raising Gazorpazorp`,
-      markerGenes: [],
       species: `animal`,
     },
 
@@ -67,13 +66,17 @@ const episodes = [
         group: `Season`,
         value: `1`,
         label: `Season 1`
+      },
+      {
+        group: `Show`,
+        value: `rick-morty`,
+        label: `Rick & Morty`
       }
     ]
   },
   {
     element: {
       title: `The wedding squanchers`,
-      markerGenes: [`var1`, `var2`],
       species: `animal`,
     },
 
@@ -100,13 +103,17 @@ const episodes = [
         group: `Season`,
         value: `2`,
         label: `Season 2`
+      },
+      {
+        group: `Show`,
+        value: `rick-morty`,
+        label: `Rick & Morty`
       }
     ]
   },
   {
     element: {
       title: `The Rickshank redemption`,
-      markerGenes: [`var1`, `var2`],
       species: `animal`,
     },
 
@@ -127,13 +134,17 @@ const episodes = [
         group: `Season`,
         value: `3`,
         label: `Season 3`
+      },
+      {
+        group: `Show`,
+        value: `rick-morty`,
+        label: `Rick & Morty`
       }
     ]
   },
   {
     element: {
       title: `Ricksy business`,
-      markerGenes: [`var3`, `var4`],
       species: `plants`
     },
 
@@ -154,13 +165,17 @@ const episodes = [
         group: `Season`,
         value: `1`,
         label: `Season 1`
+      },
+      {
+        group: `Show`,
+        value: `rick-morty`,
+        label: `Rick & Morty`
       }
     ]
   },
   {
     element: {
       title: `Close Rick-counters of the Rick kind`,
-      markerGenes: [`var1`, `var2`],
       species: `plants`
     },
     facets: [
@@ -186,6 +201,11 @@ const episodes = [
         group: `Season`,
         value: `1`,
         label: `Season 1`
+      },
+      {
+        group: `Show`,
+        value: `rick-morty`,
+        label: `Rick & Morty`
       }
     ]
   }
