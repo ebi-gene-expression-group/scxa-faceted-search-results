@@ -12,23 +12,23 @@ class FacetedSearchContainer extends React.Component {
   constructor(props) {
     super(props)
 
-    const clearFacets = () =>{
-      const facets = _(props.results)
-        .flatMap(`facets`)
-        .compact()   // lodash will emit undefined if `facets` doesn’t exist :/
-        .uniqWith(_.isEqual)
-        .map((facet) => ({...facet, disabled: false}))
-        .value()
-      const groupedFacetByResults = props.results.map( result => _.groupBy(result.facets, `group`))
-      const groupedFacetByAll = Object.keys(_.groupBy(facets, `group`))
+    const uniqueFacets = _(props.results)
+      .flatMap(`facets`)
+      .compact()   // lodash will emit undefined if `facets` doesn’t exist :/
+      .uniqWith(_.isEqual)
+      .map((facet) => ({...facet, disabled: false}))
+      .value()
 
-      const clearedFacet = groupedFacetByAll.filter(group => !groupedFacetByResults.every((result, idx, results) => _.isEqual(result[group],results[0][group])))
-      //clear shared facets in the initial search results
-      return facets.filter(facet => clearedFacet.includes(facet.group))
-    }
+    const groupedResultFacets = props.results.map(result => _.groupBy(result.facets, `group`))
+    const groupedUniqueFacets = Object.keys(_.groupBy(uniqueFacets, `group`))
+
+    const sharedFacets =
+      groupedUniqueFacets.filter(group =>
+        !groupedResultFacets.every((result, idx, results) =>
+          _.isEqual(result[group], results[0][group])))
 
     this.state = {
-      facets: clearFacets(),
+      facets: uniqueFacets.filter(facet => sharedFacets.includes(facet.group)),
       selectedFacets: {} // TODO (?) Build initial state of checked filters from props if wrapped in React Router,
     }
 
