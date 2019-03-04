@@ -76,7 +76,7 @@ class ExperimentTableHeader extends  React.Component {
   }
 
   onClick(attribute, sortOrder){
-    this.props.onClick(sortOrder)
+    this.props.onClick(sortOrder, attribute)
     this.setState({
       sortTitle: attribute,
       ascending: sortOrder

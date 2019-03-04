@@ -14,8 +14,9 @@ class FilterList extends React.Component {
     this.sortTable = this.sortTable.bind(this)
   }
 
-  sortTable(sortOrder){
+  sortTable(sortOrder, attribute){
     this.setState({
+      sortTitle: attribute,
       ascending: sortOrder
     })
   }
