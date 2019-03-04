@@ -18,7 +18,7 @@ CheckboxOption.propTypes = {
   label: PropTypes.string.isRequired,
   disabled: PropTypes.bool.isRequired,
   checked: PropTypes.bool.isRequired,
-  onChange: PropTypes.func.isRrequired
+  onChange: PropTypes.func.isRequired
 }
 
 // In principle we don’t need this component to be stateful, but in doing so we can create a custom _handleChange
