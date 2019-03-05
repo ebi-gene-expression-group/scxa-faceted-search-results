@@ -68,6 +68,7 @@ const episodes = [
       meow: `rasperry`,
       wowWow: `blueberry`
     },
+
     facets: [
       {
         group: `Planet`,
@@ -91,6 +92,11 @@ const episodes = [
         group: `Season`,
         value: `1`,
         label: `Season 1`
+      },
+      {
+        group: `Show`,
+        value: `rick-morty`,
+        label: `Rick & Morty`
       }
     ]
   },
@@ -100,6 +106,7 @@ const episodes = [
       meow: `rasperry`,
       wowWow: `blueberry`
     },
+
     facets: [
       {
         group: `Planet`,
@@ -123,6 +130,11 @@ const episodes = [
         group: `Season`,
         value: `2`,
         label: `Season 2`
+      },
+      {
+        group: `Show`,
+        value: `rick-morty`,
+        label: `Rick & Morty`
       }
     ]
   },
@@ -132,6 +144,7 @@ const episodes = [
       meow: `rasperry`,
       wowWow: `blueberry`
     },
+
     facets: [
       {
         group: `Guest character`,
@@ -149,6 +162,11 @@ const episodes = [
         group: `Season`,
         value: `3`,
         label: `Season 3`
+      },
+      {
+        group: `Show`,
+        value: `rick-morty`,
+        label: `Rick & Morty`
       }
     ]
   },
@@ -158,6 +176,7 @@ const episodes = [
       meow: `rasperry`,
       wowWow: `blueberry`
     },
+
     facets: [
       {
         group: `Guest character`,
@@ -175,6 +194,11 @@ const episodes = [
         group: `Season`,
         value: `1`,
         label: `Season 1`
+      },
+      {
+        group: `Show`,
+        value: `rick-morty`,
+        label: `Rick & Morty`
       }
     ]
   },
@@ -207,6 +231,11 @@ const episodes = [
         group: `Season`,
         value: `1`,
         label: `Season 1`
+      },
+      {
+        group: `Show`,
+        value: `rick-morty`,
+        label: `Rick & Morty`
       }
     ]
   }

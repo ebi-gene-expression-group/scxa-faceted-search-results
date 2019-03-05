@@ -1,9 +1,10 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import FetchLoader from '../src/FetchLoader'
-import ExperimentTableCard from './ExperimentTableCard'
-import ExperimentTableHeader from './ExperimentTableHeader'
+
+import FetchLoader from '../../src/FetchLoader'
+import ExperimentTableCard from '../ExperimentTableCard'
+import ExperimentTableHeader from '../ExperimentTableHeader'
 
 const render = (options, target) => {
   ReactDOM.render(

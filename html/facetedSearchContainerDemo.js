@@ -13,6 +13,12 @@ const render = (target) => {
       },
       facets: [
         {
+          group: `Show`,
+          value: `rick-and-morty`,
+          label: `Rick & Morty`,
+          description: `Name of TV show`
+        },
+        {
           group: `Planet`,
           value: `gazorpazorp`,
           label: `Gazorpazorp`,
@@ -43,6 +49,12 @@ const render = (target) => {
         title: `The wedding squanchers`
       },
       facets: [
+        {
+          group: `Show`,
+          value: `rick-and-morty`,
+          label: `Rick & Morty`,
+          description: `Name of TV show`
+        },
         {
           group: `Planet`,
           value: `squanch`,
@@ -75,6 +87,12 @@ const render = (target) => {
       },
       facets: [
         {
+          group: `Show`,
+          value: `rick-and-morty`,
+          label: `Rick & Morty`,
+          description: `Name of TV show`
+        },
+        {
           group: `Guest character`,
           value: `birdperson`,
           label: `Birdperson`,
@@ -100,6 +118,12 @@ const render = (target) => {
       },
       facets: [
         {
+          group: `Show`,
+          value: `rick-and-morty`,
+          label: `Rick & Morty`,
+          description: `Name of TV show`
+        },
+        {
           group: `Guest character`,
           value: `squanchy`,
           label: `Squanchy`,
@@ -124,6 +148,12 @@ const render = (target) => {
         title: `Close Rick-counters of the Rick kind`
       },
       facets: [
+        {
+          group: `Show`,
+          value: `rick-and-morty`,
+          label: `Rick & Morty`,
+          description: `Name of TV show`
+        },
         {
           group: `Guest character`,
           value: `ricktiminus_sancheziminius`,
@@ -153,7 +183,8 @@ const render = (target) => {
   ]
 
   ReactDOM.render(
-    <FacetedSearchContainer results={episodes}
+    <FacetedSearchContainer
+      results={episodes}
       ResultsHeaderClass={EpisodesHeader}
       ResultElementClass={EpisodeCard}
       checkboxFacetGroups={[`Season`]}
