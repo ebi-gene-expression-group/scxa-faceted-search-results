@@ -83,7 +83,7 @@ class FacetedSearchContainer extends React.Component {
 
   _handleChange(facetGroup, selectedFacetsInGroup) {
     const _selectedFacets = _.defaultsDeep({}, this.state.selectedFacets)
-    _selectedFacets[facetGroup] = selectedFacetsInGroup
+    _selectedFacets[facetGroup] = selectedFacetsInGroup || []
 
     const nextSelectedFacets =
        Object.keys(_selectedFacets)
